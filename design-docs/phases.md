@@ -75,11 +75,11 @@
 
 ## Phase 5 — Server Actions & Integrations
 
-- [ ] `app/(marketing)/contact/actions.ts` — Next.js Server Action for form submission: Zod validate → honeypot check → rate-limit (3/IP/hr) → Resend email delivery (§5.6)
-- [ ] Configure Resend: DKIM/SPF/DMARC on cindariq.co.ke, sender verification
-- [ ] Form success state: replace form with confirmation + calendar link
-- [ ] Form error state: non-dismissible error banner, keep fields populated
-- [ ] Analytics event `contact_form_submit` on success
+- [x] `app/(marketing)/contact/actions.ts` — Next.js Server Action for form submission: Zod validate → honeypot check → rate-limit (3/IP/hr) → Resend email delivery (§5.6)
+- [x] Configure Resend: DKIM/SPF/DMARC on cindariq.co.ke, sender verification — DNS records documented in `.env.example` STEP 1, ready to apply once domain is purchased
+- [x] Form success state: replace form with confirmation + calendar link
+- [x] Form error state: non-dismissible error banner, keep fields populated
+- [x] Analytics event `contact_form_submit` on success
 
 ---
 

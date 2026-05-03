@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useRef } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -54,9 +54,24 @@ function Field({
   );
 }
 
+// Extend gtag / plausible on window for analytics events
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    plausible?: (event: string, opts?: Record<string, unknown>) => void;
+  }
+}
+
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const { touched, touch, fieldErrors, setFieldError, clearFieldError } = useFormValidation();
+
+  // Fire analytics event once when form submission succeeds (PRD §5.6 AC)
+  useEffect(() => {
+    if (!state.success) return;
+    window.gtag?.("event", "contact_form_submit");
+    window.plausible?.("contact_form_submit");
+  }, [state.success]);
 
   // Validate a single field on blur
   function handleBlur(field: string, value: string) {
@@ -92,13 +107,17 @@ export function ContactForm() {
           We will be in touch within one business day. If you would prefer to speak sooner, use the
           calendar link to book directly.
         </p>
+        {/* TODO: Replace href with actual Cal.com / Calendly URL (OPEN-03) */}
+        <a href="#" className="text-body font-medium text-ember underline-offset-4 hover:underline">
+          Open booking calendar
+        </a>
       </div>
     );
   }
 
   return (
     <form action={formAction} noValidate className="flex flex-col gap-6">
-      {/* Non-dismissible server error banner */}
+      {/* Non-dismissible server error banner — covers both field errors and _form-level errors */}
       {state.error && !state.success && (
         <div
           role="alert"
@@ -107,7 +126,8 @@ export function ContactForm() {
         >
           <WarningCircle size={20} className="mt-0.5 shrink-0 text-ember" aria-hidden="true" />
           <p className="text-caption text-ember">
-            Something went wrong. Please check the fields below and try again.
+            {state.error["_form"]?.[0] ??
+              "Something went wrong. Please check the fields below and try again."}
           </p>
         </div>
       )}
