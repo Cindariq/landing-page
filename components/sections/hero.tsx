@@ -10,10 +10,10 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   return (
     <section
-      className="relative -mt-16 flex min-h-[80vh] items-center bg-cinder pt-16 lg:min-h-screen"
+      className="relative -mt-18 flex min-h-[80vh] items-center bg-cinder pt-18 lg:min-h-screen"
       aria-label="Hero"
     >
-      <div className="mx-auto w-full max-w-300 px-6 py-20 md:px-8 lg:px-16">
+      <div className="mx-auto w-full max-w-360 px-6 py-20 md:px-10 lg:px-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-3">
           {/* Copy — 2/3 */}
           <div className="lg:col-span-2">

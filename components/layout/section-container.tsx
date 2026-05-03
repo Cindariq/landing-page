@@ -36,7 +36,7 @@ export function SectionContainer({
       aria-labelledby={ariaLabelledBy}
       className={cn("w-full", backgroundClasses[background], paddingClasses[paddingY], className)}
     >
-      <div className="mx-auto max-w-300 px-6 md:px-8 lg:px-16">{children}</div>
+      <div className="mx-auto max-w-360 px-6 md:px-10 lg:px-20">{children}</div>
     </section>
   );
 }

@@ -20,7 +20,7 @@ const kraPin = process.env.KRA_PIN ?? "[KRA PIN TBC]";
 export function SiteFooter() {
   return (
     <footer className="w-full bg-cinder" aria-label="Site footer">
-      <div className="mx-auto max-w-300 px-6 py-16 md:px-8 lg:px-16">
+      <div className="mx-auto max-w-360 px-6 py-16 md:px-10 lg:px-20">
         {/* Three-column grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           {/* Column 1 — Brand */}
