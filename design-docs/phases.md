@@ -49,12 +49,12 @@
 
 ## Phase 3 — Page Sections (Home)
 
-- [ ] `<Hero />` — cinder bg, asymmetric layout (2/3 copy, 1/3 Q-mark), verbatim copy from §4.3, Source Serif 4 italic H1, Ember CTA, secondary text link with arrow
-- [ ] `<ProblemFraming />` — smoke bg, 3-column `<FeatureCard />` grid, verbatim copy from §4.4 (ShieldCheck, Lock, Recycle icons)
-- [ ] `<HowItWorks />` — slate bg, 5 `<ProcessStep />` components with horizontal connector (desktop) / vertical timeline (mobile), verbatim copy from §4.5
-- [ ] `<ComplianceMap />` — parchment bg, 3 `<ComplianceCard />` components, verbatim copy from §4.6 (Cube, Lock, Leaf icons)
-- [ ] `<SectorGrid />` — smoke bg, 2×2 grid of `<SectorTile />`, verbatim copy from §4.7
-- [ ] `<ClosingCTA />` — cinder bg, centred, verbatim copy from §4.8, calendar link destination
+- [x] `<Hero />` — cinder bg, asymmetric layout (2/3 copy, 1/3 Q-mark), verbatim copy from §4.3, Source Serif 4 italic H1, Ember CTA, secondary text link with arrow
+- [x] `<ProblemFraming />` — smoke bg, 3-column `<FeatureCard />` grid, verbatim copy from §4.4 (ShieldCheck, Lock, Recycle icons)
+- [x] `<HowItWorks />` — slate bg, 5 `<ProcessStep />` components with horizontal connector (desktop) / vertical timeline (mobile), verbatim copy from §4.5
+- [x] `<ComplianceMap />` — parchment bg, 3 `<ComplianceCard />` components, verbatim copy from §4.6 (Cube, Lock, Leaf icons)
+- [x] `<SectorGrid />` — smoke bg, 2×2 grid of `<SectorTile />`, verbatim copy from §4.7
+- [x] `<ClosingCTA />` — cinder bg, centred, verbatim copy from §4.8, calendar link destination
 
 ---
 
