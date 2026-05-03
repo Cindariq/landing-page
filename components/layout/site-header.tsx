@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CindariqLogo } from "@/components/brand/logo";
@@ -11,17 +10,9 @@ import { useUIStore } from "@/lib/store/ui-store";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
-  const { scrolled, setScrolled } = useUIStore();
+  const { scrolled } = useUIStore();
   const pathname = usePathname();
   const isHome = pathname === "/";
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    // Set initial state in case page loads already scrolled
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [setScrolled]);
 
   // On non-home pages the header is always solid so text is legible
   const showSolid = scrolled || !isHome;

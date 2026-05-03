@@ -40,10 +40,10 @@
 
 ## Phase 2 — State Management
 
-- [ ] `lib/store/ui-store.ts` — Zustand store for `mobileMenuOpen` + `scrolled` state per §8.2
-- [ ] Single `useEffect` scroll listener on layout level (not per-component) for `setScrolled`
-- [ ] `lib/store/form-store.ts` — contact form optimistic state (§8.3 mentions it)
-- [ ] `lib/schemas/contact.ts` — Zod schema for all contact form fields including E.164 phone validation (§5.6)
+- [x] `lib/store/ui-store.ts` — Zustand store for `mobileMenuOpen` + `scrolled` state per §8.2
+- [x] Single `useEffect` scroll listener on layout level (not per-component) for `setScrolled` — extracted to `<ScrollObserver />` rendered once in marketing layout
+- [x] `lib/store/form-store.ts` — contact form optimistic state (§8.3 mentions it)
+- [x] `lib/schemas/contact.ts` — Zod schema for all contact form fields including E.164 phone validation (§5.6)
 
 ---
 
