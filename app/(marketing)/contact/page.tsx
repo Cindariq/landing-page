@@ -16,10 +16,10 @@ export default function ContactPage() {
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="contact-page-heading">
         <Eyebrow colour="smoke">Get in touch</Eyebrow>
-        <h1 id="contact-page-heading" className="mb-6 max-w-[580px] text-h1 font-bold text-smoke">
+        <h1 id="contact-page-heading" className="mb-6 max-w-145 text-h1 font-bold text-smoke">
           Start with a conversation.
         </h1>
-        <p className="max-w-[480px] text-body-lg text-smoke/80">
+        <p className="max-w-120 text-body-lg text-smoke/80">
           Fill in the form below and we will be in touch within one business day. If you prefer to
           book time directly, the calendar link is on the right.
         </p>

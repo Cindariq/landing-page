@@ -13,7 +13,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
       </a>
       {/* Minimal header — logo only, no nav */}
       <header className="h-16 w-full border-b border-cinder/10 bg-smoke">
-        <div className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between px-6 md:px-8 lg:px-16">
+        <div className="mx-auto flex h-full w-full max-w-300 items-center justify-between px-6 md:px-8 lg:px-16">
           <Link href="/" aria-label="Cindariq — go to home">
             <CindariqLogo height={28} colourMode="on-light" />
           </Link>
@@ -31,7 +31,7 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
       </main>
 
       <footer className="border-t border-cinder/10 py-6">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-8 lg:px-16">
+        <div className="mx-auto max-w-300 px-6 md:px-8 lg:px-16">
           <p className="text-caption text-ash">© 2026 Cindariq Limited. All rights reserved.</p>
         </div>
       </footer>

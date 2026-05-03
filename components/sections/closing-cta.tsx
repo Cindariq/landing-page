@@ -10,7 +10,7 @@ export function ClosingCTA() {
       id="closing-cta"
       ariaLabelledBy="closing-cta-heading"
     >
-      <div className="mx-auto max-w-[640px] text-center">
+      <div className="mx-auto max-w-160 text-center">
         <h2 id="closing-cta-heading" className="mb-6 text-h1 font-bold text-smoke">
           Start with a discovery conversation.
         </h2>

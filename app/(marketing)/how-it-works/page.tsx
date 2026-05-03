@@ -40,10 +40,10 @@ export default function HowItWorksPage() {
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="hiw-page-heading">
         <Eyebrow colour="smoke">How Cindariq works</Eyebrow>
-        <h1 id="hiw-page-heading" className="mb-6 max-w-[640px] text-h1 font-bold text-smoke">
+        <h1 id="hiw-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
           Five steps. One defensible record.
         </h1>
-        <p className="max-w-[520px] text-body-lg text-smoke/80">
+        <p className="max-w-130 text-body-lg text-smoke/80">
           Every engagement follows the same structured process — consistent, documented, and built
           to withstand scrutiny at every stage.
         </p>
@@ -55,10 +55,7 @@ export default function HowItWorksPage() {
       {/* What we deliver */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="deliverables-heading">
         <Eyebrow>What you receive</Eyebrow>
-        <h2
-          id="deliverables-heading"
-          className="mb-16 max-w-[560px] text-h2 font-semibold text-cinder"
-        >
+        <h2 id="deliverables-heading" className="mb-16 max-w-140 text-h2 font-semibold text-cinder">
           Three documents every audit needs.
         </h2>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">

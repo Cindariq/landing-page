@@ -39,10 +39,7 @@ export function HowItWorks() {
       ariaLabelledBy="how-it-works-heading"
     >
       <Eyebrow>How Cindariq works</Eyebrow>
-      <h2
-        id="how-it-works-heading"
-        className="mb-16 max-w-[600px] text-h2 font-semibold text-smoke"
-      >
+      <h2 id="how-it-works-heading" className="mb-16 max-w-150 text-h2 font-semibold text-smoke">
         From your dock to a defensible record.
       </h2>
 

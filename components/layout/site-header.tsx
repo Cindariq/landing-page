@@ -24,7 +24,7 @@ export function SiteHeader() {
         showSolid ? "bg-cinder/95 shadow-sm backdrop-blur-sm" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between px-6 md:px-8 lg:px-16">
+      <div className="mx-auto flex h-full w-full max-w-300 items-center justify-between px-6 md:px-8 lg:px-16">
         {/* Logo */}
         <Link href="/" aria-label="Cindariq — go to home">
           <CindariqLogo height={32} colourMode="on-dark" />

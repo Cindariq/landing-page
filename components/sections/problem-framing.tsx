@@ -78,7 +78,7 @@ export function ProblemFraming() {
       <Eyebrow>The work behind the work</Eyebrow>
       <h2
         id="problem-framing-heading"
-        className="mb-16 max-w-[600px] text-h2 font-semibold text-cinder"
+        className="mb-16 max-w-150 text-h2 font-semibold text-cinder"
       >
         Compliance proof you cannot generate today.
       </h2>

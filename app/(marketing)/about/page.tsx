@@ -21,10 +21,10 @@ export default function AboutPage() {
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="about-page-heading">
         <Eyebrow colour="smoke">About Cindariq</Eyebrow>
-        <h1 id="about-page-heading" className="mb-6 max-w-[640px] text-h1 font-bold text-smoke">
+        <h1 id="about-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
           Serious work. Verifiable outcomes.
         </h1>
-        <p className="max-w-[520px] text-body-lg text-smoke/80">
+        <p className="max-w-130 text-body-lg text-smoke/80">
           Cindariq is a Nairobi-based IT asset disposition company serving regulated enterprises and
           public bodies in Kenya. We exist to make compliance proof a deliverable, not an
           afterthought.
@@ -34,10 +34,10 @@ export default function AboutPage() {
       {/* Company narrative */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="narrative-heading">
         <Eyebrow>Our focus</Eyebrow>
-        <h2 id="narrative-heading" className="mb-8 max-w-[560px] text-h2 font-semibold text-cinder">
+        <h2 id="narrative-heading" className="mb-8 max-w-140 text-h2 font-semibold text-cinder">
           The gap no recycler fills.
         </h2>
-        <div className="max-w-[680px] space-y-5 text-body text-ash">
+        <div className="max-w-170 space-y-5 text-body text-ash">
           <p>
             Most enterprise IT refresh cycles end with equipment handed to a logistics contractor
             who issues a tonnage report. The tonnage report satisfies no audit, protects no DPO, and
@@ -60,10 +60,7 @@ export default function AboutPage() {
       {/* Credentials */}
       <SectionContainer background="parchment" paddingY="lg" ariaLabelledBy="credentials-heading">
         <Eyebrow colour="cinder">Our registrations</Eyebrow>
-        <h2
-          id="credentials-heading"
-          className="mb-12 max-w-[500px] text-h2 font-semibold text-cinder"
-        >
+        <h2 id="credentials-heading" className="mb-12 max-w-125 text-h2 font-semibold text-cinder">
           Compliance in our own operations.
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -135,7 +132,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[auto_1fr]">
           {/* Portrait placeholder */}
           <div
-            className="aspect-square w-full max-w-[260px] rounded-xl bg-cinder/10"
+            className="aspect-square w-full max-w-65 rounded-xl bg-cinder/10"
             role="img"
             aria-label="Founder portrait — photograph to follow"
           />
@@ -148,7 +145,7 @@ export default function AboutPage() {
             <p className="mb-6 text-caption font-semibold tracking-[0.06em] text-ash uppercase">
               Founder, Cindariq Limited
             </p>
-            <div className="max-w-[600px] space-y-4 text-body text-ash">
+            <div className="max-w-150 space-y-4 text-body text-ash">
               {/* TODO: Replace with founder biography before launch */}
               <p>
                 [Founder biography — to be supplied before launch. This section will describe

@@ -1,6 +1,6 @@
 export default function TermsPage() {
   return (
-    <article className="mx-auto max-w-[760px] px-6 py-16 md:px-8 md:py-24">
+    <article className="mx-auto max-w-190 px-6 py-16 md:px-8 md:py-24">
       <h1 className="mb-4 text-h1 font-bold text-cinder">Terms of Service</h1>
       <p className="mb-10 text-caption font-medium text-ash">
         Cindariq Limited &mdash; cindariq.co.ke

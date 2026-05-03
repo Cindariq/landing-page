@@ -13,7 +13,7 @@ export function Hero() {
       className="relative -mt-16 flex min-h-[80vh] items-center bg-cinder pt-16 lg:min-h-screen"
       aria-label="Hero"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-6 py-20 md:px-8 lg:px-16">
+      <div className="mx-auto w-full max-w-300 px-6 py-20 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-3">
           {/* Copy — 2/3 */}
           <div className="lg:col-span-2">
@@ -25,7 +25,7 @@ export function Hero() {
               What remains is what matters.
             </h1>
 
-            <p className="mb-10 max-w-[520px] text-body-lg text-smoke/80">
+            <p className="mb-10 max-w-130 text-body-lg text-smoke/80">
               Cindariq applies certified, intelligent processes to your retired IT equipment so the
               data is destroyed, the records survive an audit, and your sustainability report has
               the numbers it needs.
@@ -59,7 +59,7 @@ export function Hero() {
               viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-[280px] w-[280px] text-ember/90"
+              className="h-70 w-70 text-ember/90"
             >
               <circle cx="44" cy="44" r="30" stroke="currentColor" strokeWidth="8" />
               <line

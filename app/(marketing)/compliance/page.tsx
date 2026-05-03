@@ -20,13 +20,10 @@ export default function CompliancePage() {
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="compliance-page-heading">
         <Eyebrow colour="smoke">Compliance</Eyebrow>
-        <h1
-          id="compliance-page-heading"
-          className="mb-6 max-w-[640px] text-h1 font-bold text-smoke"
-        >
+        <h1 id="compliance-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
           Standards, named. Not gestured at.
         </h1>
-        <p className="max-w-[520px] text-body-lg text-smoke/80">
+        <p className="max-w-130 text-body-lg text-smoke/80">
           Every Cindariq engagement produces evidence aligned to specific, named standards. We do
           not describe our work in aspirational terms; we describe it in audit terms.
         </p>
@@ -40,7 +37,7 @@ export default function CompliancePage() {
         <Eyebrow>How we stay current</Eyebrow>
         <h2
           id="registrations-heading"
-          className="mb-12 max-w-[560px] text-h2 font-semibold text-cinder"
+          className="mb-12 max-w-140 text-h2 font-semibold text-cinder"
         >
           Registered, licensed, and accountable.
         </h2>

@@ -73,10 +73,7 @@ export function ComplianceMap() {
       ariaLabelledBy="compliance-map-heading"
     >
       <Eyebrow colour="cinder">Compliance you do not have to translate</Eyebrow>
-      <h2
-        id="compliance-map-heading"
-        className="mb-16 max-w-[500px] text-h2 font-semibold text-cinder"
-      >
+      <h2 id="compliance-map-heading" className="mb-16 max-w-125 text-h2 font-semibold text-cinder">
         Standards, named.
       </h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

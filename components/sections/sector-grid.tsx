@@ -105,10 +105,7 @@ export function SectorGrid() {
       ariaLabelledBy="sector-grid-heading"
     >
       <Eyebrow>Who Cindariq serves</Eyebrow>
-      <h2
-        id="sector-grid-heading"
-        className="mb-16 max-w-[500px] text-h2 font-semibold text-cinder"
-      >
+      <h2 id="sector-grid-heading" className="mb-16 max-w-125 text-h2 font-semibold text-cinder">
         Where compliance proof is the deliverable.
       </h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">

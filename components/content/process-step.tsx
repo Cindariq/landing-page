@@ -36,7 +36,7 @@ export function ProcessStep({
         )}
       </div>
       <h3 className="mb-2 text-h4 font-semibold text-smoke">{title}</h3>
-      <p className="max-w-[200px] text-body text-smoke/70">{body}</p>
+      <p className="max-w-50 text-body text-smoke/70">{body}</p>
     </div>
   );
 }

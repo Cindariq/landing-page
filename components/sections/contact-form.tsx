@@ -103,7 +103,7 @@ export function ContactForm() {
       >
         <CheckCircle size={48} className="text-ember" aria-hidden="true" />
         <h2 className="text-h3 font-semibold text-cinder">Message received.</h2>
-        <p className="max-w-[420px] text-body text-ash">
+        <p className="max-w-105 text-body text-ash">
           We will be in touch within one business day. If you would prefer to speak sooner, use the
           calendar link to book directly.
         </p>
