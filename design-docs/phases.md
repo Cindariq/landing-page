@@ -112,16 +112,16 @@
 
 ## Phase 8 — QA & Accessibility
 
-- [ ] Axe-core integration in Playwright E2E tests — zero violations on every route
+- [x] Axe-core integration in Playwright E2E tests — zero violations on every route
 - [ ] Run Lighthouse CI on all routes — Performance ≥ 90, Accessibility = 100, Best Practices ≥ 95, SEO = 100
 - [ ] Keyboard-only navigation pass — tab order, visible focus rings on all interactive elements
 - [ ] Screen reader pass (VoiceOver + NVDA) on home, compliance, contact
 - [ ] Cross-browser testing matrix per §13.2 (Chrome, Safari, Firefox, Edge, Samsung Internet)
 - [ ] Cross-device testing per §13.2 (iPhone 13/14, Android Chrome, iPad, 13" laptop, 27" desktop)
-- [ ] Validate heading hierarchy (single H1 per page, logical nesting) on all routes
-- [ ] All external links have `rel="noopener noreferrer"` and open in new tab
+- [x] Validate heading hierarchy (single H1 per page, logical nesting) on all routes
+- [x] All external links have `rel="noopener noreferrer"` and open in new tab
 - [ ] Verify 2% Ember rule visually at each above-the-fold breakpoint (§3.3 AC)
-- [ ] Forbidden-words grep passes on all committed copy (§2.3 AC)
+- [x] Forbidden-words grep passes on all committed copy (§2.3 AC)
 - [ ] Verify compliance ribbon registration numbers are populated (not placeholders) before launch
 
 ---
