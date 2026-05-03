@@ -36,7 +36,11 @@ async function main() {
   for (const file of files) {
     const content = (await fs.readFile(file, "utf8")).toLowerCase();
     for (const word of FORBIDDEN) {
-      if (content.includes(word.toLowerCase())) {
+      // \b word boundary + negative lookahead for `-` so Tailwind utilities
+      // like `leading-none` don't trigger the marketing-copy "leading" check.
+      const escaped = word.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const pattern = new RegExp(`\\b${escaped}(?!-)`);
+      if (pattern.test(content)) {
         console.error(`✗ Forbidden word "${word}" found in ${file}`);
         violations++;
       }
