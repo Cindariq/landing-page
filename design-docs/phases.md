@@ -101,12 +101,12 @@
 
 ## Phase 7 — Performance
 
-- [ ] Verify all images use `next/image` with correct sizes, priority flags (above-fold only), AVIF/WebP formats
-- [ ] Audit `'use client'` usage — must be limited to: mobile menu (Sheet), contact form, scroll listener only (§10.6)
-- [ ] Verify font subsetting — Latin only, `display: swap`, Source Serif 4 not preloaded
-- [ ] Verify JS bundle < 100 KB compressed, CSS < 30 KB, total page < 350 KB (§10.2)
-- [ ] `prefers-reduced-motion` CSS block in `globals.css` per §11.4
-- [ ] Add skip-to-content link as first focusable element on every page (§11.2)
+- [x] Verify all images use `next/image` with correct sizes, priority flags (above-fold only), AVIF/WebP formats
+- [x] Audit `'use client'` usage — must be limited to: mobile menu (Sheet), contact form, scroll listener only (§10.6)
+- [x] Verify font subsetting — Latin only, `display: swap`, Source Serif 4 not preloaded
+- [x] Verify JS bundle < 100 KB compressed, CSS < 30 KB, total page < 350 KB (§10.2)
+- [x] `prefers-reduced-motion` CSS block in `globals.css` per §11.4
+- [x] Add skip-to-content link as first focusable element on every page (§11.2)
 
 ---
 

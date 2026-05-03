@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -43,7 +40,15 @@ export function Hero() {
                 className="flex items-center gap-1.5 text-body font-medium text-smoke/70 transition-colors hover:text-smoke"
               >
                 See how it works
-                <ArrowRight size={18} aria-hidden="true" />
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 9h12M10 4l5 5-5 5"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             </div>
           </div>
