@@ -60,16 +60,16 @@
 
 ## Phase 4 — Page Assembly (All 7 Routes)
 
-- [ ] `/` (Home) — assemble all 7 sections in order per §4.1 section map
-- [ ] `/how-it-works` — full-page `<HowItWorks />` expansion with supporting content
-- [ ] `/compliance` — full-page `<ComplianceMap />` expansion with deeper standards content
-- [ ] `/about` — founder bio, company narrative, AGPO/NEMA/ODPC certificates visible/linked, founder portrait placeholder
-- [ ] `/contact` — `<ContactForm />` + calendar booking link (Cal.com/Calendly TBD per OPEN-03), reassurance copy
-- [ ] `/privacy` — legal copy (pending lawyer per OPEN-04)
-- [ ] `/terms` — legal copy (pending lawyer per OPEN-04)
-- [ ] `app/(marketing)/layout.tsx` — shared marketing layout with header + footer
-- [ ] `app/(legal)/layout` — legal pages layout (minimal header)
-- [ ] Root `app/layout.tsx` — apply fonts, inject Organization JSON-LD, metadata defaults
+- [x] `/` (Home) — assemble all 7 sections in order per §4.1 section map
+- [x] `/how-it-works` — full-page `<HowItWorks />` expansion with supporting content
+- [x] `/compliance` — full-page `<ComplianceMap />` expansion with deeper standards content
+- [x] `/about` — founder bio, company narrative, AGPO/NEMA/ODPC certificates visible/linked, founder portrait placeholder
+- [x] `/contact` — `<ContactForm />` + calendar booking link (Cal.com/Calendly TBD per OPEN-03), reassurance copy
+- [x] `/privacy` — legal copy (pending lawyer per OPEN-04)
+- [x] `/terms` — legal copy (pending lawyer per OPEN-04)
+- [x] `app/(marketing)/layout.tsx` — shared marketing layout with header + footer
+- [x] `app/(legal)/layout` — legal pages layout (minimal header)
+- [x] Root `app/layout.tsx` — apply fonts, inject Organization JSON-LD, metadata defaults
 
 ---
 
