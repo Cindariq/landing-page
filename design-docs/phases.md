@@ -85,16 +85,16 @@
 
 ## Phase 6 — SEO & Metadata
 
-- [ ] Site-wide metadata export in `app/layout.tsx` — full config per §9.3 (title template, description, OG, Twitter, robots, keywords)
-- [ ] Per-page metadata overrides for all 5 indexed pages per §9.4
-- [ ] `app/sitemap.ts` — all 7 routes with priorities per §9.6
-- [ ] `app/robots.ts` — allow `/`, disallow `/api/` and `/_next/` per §9.6
-- [ ] `app/opengraph-image.tsx` — dynamic OG image (1200×630, cinder bg, Smoke text, tagline) per §9.7
-- [ ] `lib/seo/jsonld.ts` — Organization, Service, WebSite schema builders per §9.5
-- [ ] Inject JSON-LD `<script>` tags into root layout and relevant pages
-- [ ] `app/icon.svg` — Q-mark favicon
-- [ ] `app/apple-icon.png` — 180×180 Apple touch icon
-- [ ] `app/manifest.ts` — basic PWA manifest
+- [x] Site-wide metadata export in `app/layout.tsx` — full config per §9.3 (title template, description, OG, Twitter, robots, keywords)
+- [x] Per-page metadata overrides for all 5 indexed pages per §9.4
+- [x] `app/sitemap.ts` — all 7 routes with priorities per §9.6
+- [x] `app/robots.ts` — allow `/`, disallow `/api/` and `/_next/` per §9.6
+- [x] `app/opengraph-image.tsx` — dynamic OG image (1200×630, cinder bg, Smoke text, tagline) per §9.7
+- [x] `lib/seo/jsonld.ts` — Organization, Service, WebSite schema builders per §9.5
+- [x] Inject JSON-LD `<script>` tags into root layout and relevant pages
+- [x] `app/icon.svg` — Q-mark favicon
+- [x] `app/apple-icon.tsx` — 180×180 Apple touch icon (ImageResponse)
+- [x] `app/manifest.ts` — basic PWA manifest
 - [ ] Structured data validation pass (schema.org validator)
 
 ---

@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ContactForm } from "@/components/sections/contact-form";
+
+export const metadata: Metadata = {
+  title: "Contact Cindariq — Book a Discovery Call",
+  description:
+    "Reach Cindariq directly. 45-minute discovery call, no obligation. Or email hello@cindariq.co.ke. Nairobi-based, serving across East Africa.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return (

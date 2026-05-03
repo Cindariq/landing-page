@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ClosingCTA } from "@/components/sections/closing-cta";
+
+export const metadata: Metadata = {
+  title: "About Cindariq — Engineering for Defensible Disposal",
+  description:
+    "Cindariq is a Kenyan-registered, AGPO-certified IT asset disposition company. NEMA-licensed, ODPC-registered, built for regulated enterprises and public bodies.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   const odpc = process.env.ODPC_REG_NUMBER;

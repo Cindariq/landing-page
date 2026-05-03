@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { ClosingCTA } from "@/components/sections/closing-cta";
+import { serviceJsonLd, jsonLdScript } from "@/lib/seo/jsonld";
+
+export const metadata: Metadata = {
+  title: "How Cindariq Works — From Pickup to Audit-Ready Records",
+  description:
+    "Five-stage IT asset disposition process: request, collect, sanitise, process, report. NIST 800-88-aligned with per-device certificates and chain of custody.",
+  alternates: { canonical: "/how-it-works" },
+};
 
 const DELIVERABLES = [
   {
@@ -24,6 +33,10 @@ const DELIVERABLES = [
 export default function HowItWorksPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(serviceJsonLd()) }}
+      />
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="hiw-page-heading">
         <Eyebrow colour="smoke">How Cindariq works</Eyebrow>

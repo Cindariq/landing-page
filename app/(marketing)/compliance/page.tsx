@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ComplianceMap } from "@/components/sections/compliance-map";
 import { ClosingCTA } from "@/components/sections/closing-cta";
+
+export const metadata: Metadata = {
+  title: "Compliance Standards — NIST 800-88, DPA 2019, GRI 306, ISO 14064",
+  description:
+    "The standards Cindariq works to: NIST SP 800-88 Rev. 2 for media sanitisation, Kenya DPA 2019 with ODPC registration, GRI 306 and ISO 14064 for ESG reporting.",
+  alternates: { canonical: "/compliance" },
+};
 
 export default function CompliancePage() {
   const odpc = process.env.ODPC_REG_NUMBER;

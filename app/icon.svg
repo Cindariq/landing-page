@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Q-mark: circle body -->
+  <circle cx="44" cy="44" r="30" stroke="#B8472D" stroke-width="8"/>
+  <!-- Q-mark: descending tail -->
+  <line x1="66" y1="62" x2="82" y2="78" stroke="#B8472D" stroke-width="8" stroke-linecap="round"/>
+</svg>
