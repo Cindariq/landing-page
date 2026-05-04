@@ -71,7 +71,12 @@
 }
 
 /* Global base */
+html {
+  overflow-x: hidden;
+}
+
 body {
+  overflow-x: hidden;
   background-color: var(--color-smoke);
   color: var(--color-cinder);
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -358,6 +363,25 @@ body {
 @media (max-width: 480px) {
   .loader-3 {
     zoom: 0.44;
+  }
+}
+
+/* Desktop scaling — proportional zoom at each breakpoint */
+@media (min-width: 1024px) {
+  .loader-3 {
+    zoom: 1.3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .loader-3 {
+    zoom: 1.6;
+  }
+}
+
+@media (min-width: 1536px) {
+  .loader-3 {
+    zoom: 2;
   }
 }
 

@@ -85,7 +85,7 @@ export function Hero() {
 
           {/* 3D falling-boxes — decorative, mirrors staircase headline */}
           <motion.div
-            className="hidden items-center justify-center lg:flex"
+            className="hidden items-center justify-center overflow-hidden lg:flex"
             aria-hidden="true"
             initial={reduceMotion ? undefined : { opacity: 0 }}
             animate={{ opacity: 1 }}

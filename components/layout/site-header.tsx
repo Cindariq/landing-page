@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CindariqLogo } from "@/components/brand/logo";
 import { Nav } from "@/components/layout/nav";
-import { MobileMenuTrigger } from "@/components/layout/mobile-menu";
+import { MobileMenu } from "@/components/layout/mobile-menu";
 import { Button } from "@/components/ui/button";
 import { useUIStore } from "@/lib/store/ui-store";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,7 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile trigger */}
-        <MobileMenuTrigger />
+        <MobileMenu />
       </div>
     </header>
   );
