@@ -31,33 +31,30 @@ export function Hero() {
               className="mb-4 block text-eyebrow font-semibold tracking-[0.08em] text-ember uppercase"
               {...motion_props(0.1)}
             >
-              Certified IT Disposition
+              Audit-ready IT asset disposition for African enterprises
             </motion.span>
 
             <h1 className="mb-6 font-serif text-display leading-tight text-smoke italic">
               <motion.span className="block pl-0" {...motion_props(0.22)}>
-                Disposed.
+                What remains
               </motion.span>
               <motion.span className="block pl-8 md:pl-10" {...motion_props(0.34)}>
-                Documented.
-              </motion.span>
-              <motion.span className="block pl-16 text-ember md:pl-20" {...motion_props(0.46)}>
-                Defensible.
+                is what matters.
               </motion.span>
             </h1>
 
             <motion.div
               className="mb-8 max-w-130 text-body-lg text-smoke/80"
-              {...motion_props(0.58)}
+              {...motion_props(0.46)}
             >
-              <p>Data permanently destroyed, certified to NIST 800-88.</p>
-              <div className="my-3 w-10 border-t border-ember/40" />
-              <p>Records that hold up in any audit, regulator review, or board inquiry.</p>
-              <div className="my-3 w-10 border-t border-ember/40" />
-              <p>Sustainability numbers ready for your next ESG report.</p>
+              <p>
+                Cindariq applies certified, intelligent processes to your retired IT equipment so
+                the data is destroyed, the records survive an audit, and your sustainability report
+                has the numbers it needs.
+              </p>
             </motion.div>
 
-            <motion.div className="flex flex-wrap items-center gap-4" {...motion_props(0.68)}>
+            <motion.div className="flex flex-wrap items-center gap-4" {...motion_props(0.56)}>
               <Button size="lg" variant="primary" asChild>
                 <Link href="/contact">Book a discovery call</Link>
               </Button>

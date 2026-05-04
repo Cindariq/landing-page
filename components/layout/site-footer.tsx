@@ -87,9 +87,8 @@ export function SiteFooter() {
           {/* Brand column */}
           <div className="flex flex-col gap-5">
             <CindariqLogo height={32} colourMode="on-dark" />
-            <p className="max-w-60 text-caption leading-relaxed text-smoke/60">
-              Certified IT Asset Disposition for Kenyan enterprises.{" "}
-              <span className="text-smoke/40">Secure. Compliant. Circular. On our terms.</span>
+            <p className="max-w-60 font-serif text-body text-smoke/60 italic">
+              What remains is what matters.
             </p>
           </div>
 

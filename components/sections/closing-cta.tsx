@@ -28,21 +28,18 @@ export function ClosingCTA() {
             Start the conversation
           </p>
           <h2 id="closing-cta-heading" className="mb-6 font-serif text-h1 text-smoke italic">
-            Forty-five minutes.
-            <br />
-            No pitch unless it fits.
+            Start with a discovery conversation.
           </h2>
         </FadeUp>
         <FadeUp delay={0.14}>
           <p className="mx-auto mb-10 max-w-120 text-body-lg text-smoke/70">
-            We listen first. If Cindariq is the right fit, we will tell you exactly how — and what
-            it costs.
+            Forty-five minutes. We listen first. We pitch only if there is something worth pitching.
           </p>
         </FadeUp>
         <FadeUp delay={0.24}>
           <div className="flex flex-col items-center gap-5">
             <Button size="lg" variant="primary" asChild>
-              <Link href="/contact">Book a discovery call</Link>
+              <Link href="/contact">Schedule a call</Link>
             </Button>
             <p className="text-caption text-smoke/40">
               No obligation. No follow-up unless you ask.
