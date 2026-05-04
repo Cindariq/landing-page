@@ -27,7 +27,7 @@ export function SiteFooter() {
           <div className="flex flex-col gap-5">
             <CindariqLogo height={32} colourMode="on-dark" />
             <p className="font-serif text-[14px] text-smoke/70 italic">
-              What remains is what matters.
+              Disposed. Documented. Defensible.
             </p>
             <div className="flex flex-col gap-2">
               <a

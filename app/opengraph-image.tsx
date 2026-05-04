@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Cindariq — What remains is what matters.";
+export const alt = "Cindariq — Disposed. Documented. Defensible.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default async function OG() {
           lineHeight: 1.05,
         }}
       >
-        What remains is what matters.
+        Disposed. Documented. Defensible.
       </div>
 
       {/* Standards sub-line */}

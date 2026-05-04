@@ -42,7 +42,7 @@ export const siteMetadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Cindariq — What remains is what matters.",
+        alt: "Cindariq — Disposed. Documented. Defensible.",
       },
     ],
   },
