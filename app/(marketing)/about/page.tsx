@@ -12,11 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const odpc = process.env.ODPC_REG_NUMBER;
-  const nema = process.env.NEMA_LICENCE_NUMBER;
-  const agpo = process.env.AGPO_NUMBER;
-  const companyReg = process.env.COMPANY_REG_NUMBER;
-
   return (
     <>
       {/* Page hero */}
@@ -95,9 +90,6 @@ export default function AboutPage() {
                 Registered with the Office of the Data Protection Commissioner as both Data
                 Controller and Data Processor under the Data Protection Act 2019.
               </p>
-              {odpc && (
-                <span className="mt-auto text-caption font-medium text-ember">Reg. {odpc}</span>
-              )}
             </div>
           </FadeUp>
 
@@ -112,9 +104,6 @@ export default function AboutPage() {
                 NEMA-licensed for the collection, transportation, and processing of electrical and
                 electronic waste under the Environmental Management Act.
               </p>
-              {nema && (
-                <span className="mt-auto text-caption font-medium text-ember">Lic. {nema}</span>
-              )}
             </div>
           </FadeUp>
 
@@ -129,9 +118,6 @@ export default function AboutPage() {
                 Certified under the Access to Government Procurement Opportunities programme.
                 PPDA-ready documentation available for public-sector procurement exercises.
               </p>
-              {agpo && (
-                <span className="mt-auto text-caption font-medium text-ember">Cert. {agpo}</span>
-              )}
             </div>
           </FadeUp>
 
@@ -146,11 +132,6 @@ export default function AboutPage() {
                 Registered in Kenya under the Companies Act 2015. Full corporate governance
                 documentation available on request.
               </p>
-              {companyReg && (
-                <span className="mt-auto text-caption font-medium text-ember">
-                  Reg. {companyReg}
-                </span>
-              )}
             </div>
           </FadeUp>
         </div>

@@ -1,100 +1,149 @@
 import Link from "next/link";
 import { CindariqLogo } from "@/components/brand/logo";
 import { Separator } from "@/components/ui/separator";
+import { LinkedinLogo, XLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
-const NAV_LINKS = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/compliance", label: "Compliance" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
+const SERVICES = [
+  { href: "/how-it-works", label: "Data Destruction" },
+  { href: "/how-it-works", label: "Secure Logistics" },
+  { href: "/how-it-works", label: "Compliance Platform" },
+  { href: "/how-it-works", label: "Circular Recovery" },
+  { href: "/how-it-works", label: "ESG Reporting" },
 ] as const;
 
-const companyReg = process.env.COMPANY_REG_NUMBER ?? "[Co. No. TBC]";
-const nemaLicence = process.env.NEMA_LICENCE_NUMBER ?? "[NEMA TBC]";
-const odpcReg = process.env.ODPC_REG_NUMBER ?? "[ODPC TBC]";
-const agpoNumber = process.env.AGPO_NUMBER ?? "[AGPO TBC]";
-const kraPin = process.env.KRA_PIN ?? "[KRA PIN TBC]";
+const COMPANY = [
+  { href: "/about", label: "About Us" },
+  { href: "/compliance", label: "Our Standards" },
+  { href: "/about", label: "Partners" },
+  { href: "/contact", label: "Careers" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+const COMPLIANCE_LINKS = [
+  { href: "/compliance", label: "NIST 800-88" },
+  { href: "/compliance", label: "Kenya DPA" },
+  { href: "/compliance", label: "GDPR" },
+  { href: "/compliance", label: "PCI DSS" },
+  { href: "/compliance", label: "ISO 27001" },
+] as const;
+
+const SOCIAL = [
+  {
+    href: "https://linkedin.com/company/cindariq",
+    label: "LinkedIn",
+    Icon: LinkedinLogo,
+  },
+  {
+    href: "https://x.com/cindariq",
+    label: "X",
+    Icon: XLogo,
+  },
+  {
+    href: "https://instagram.com/cindariq",
+    label: "Instagram",
+    Icon: InstagramLogo,
+  },
+  {
+    href: "https://wa.me/254000000000",
+    label: "WhatsApp",
+    Icon: WhatsappLogo,
+  },
+] as const;
+
+function FooterColumn({
+  heading,
+  links,
+}: {
+  heading: string;
+  links: readonly { href: string; label: string }[];
+}) {
+  return (
+    <nav aria-label={`${heading} links`}>
+      <p className="mb-5 text-eyebrow font-semibold tracking-[0.08em] text-ember uppercase">
+        {heading}
+      </p>
+      <ul className="flex flex-col gap-3">
+        {links.map(({ href, label }) => (
+          <li key={label}>
+            <Link
+              href={href}
+              className="text-caption text-smoke/50 transition-colors hover:text-smoke/90"
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
 
 export function SiteFooter() {
   return (
     <footer className="w-full bg-cinder" aria-label="Site footer">
       <div className="mx-auto max-w-360 px-6 py-16 md:px-10 lg:px-20">
-        {/* Three-column grid */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {/* Column 1 — Brand */}
+        {/* Top grid — brand + three nav columns */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+          {/* Brand column */}
           <div className="flex flex-col gap-5">
             <CindariqLogo height={32} colourMode="on-dark" />
-            <p className="font-serif text-[14px] text-smoke/70 italic">
-              Disposed. Documented. Defensible.
+            <p className="max-w-60 text-caption leading-relaxed text-smoke/60">
+              Certified IT Asset Disposition for Kenyan enterprises.{" "}
+              <span className="text-smoke/40">Secure. Compliant. Circular. On our terms.</span>
             </p>
-            <div className="flex flex-col gap-2">
-              <a
-                href="mailto:hello@cindariq.co.ke"
-                className="text-caption text-smoke/60 transition-opacity hover:text-smoke/90"
-              >
-                hello@cindariq.co.ke
-              </a>
-              <span className="text-caption text-smoke/40">+254 — [TBC]</span>
+          </div>
+
+          <FooterColumn heading="Services" links={SERVICES} />
+          <FooterColumn heading="Company" links={COMPANY} />
+          <FooterColumn heading="Compliance" links={COMPLIANCE_LINKS} />
+        </div>
+
+        {/* Social + bottom bar */}
+        <div className="mt-16 flex flex-col gap-8">
+          {/* Social row */}
+          <div>
+            <p className="mb-4 text-eyebrow font-semibold tracking-[0.08em] text-smoke/40 uppercase">
+              Social
+            </p>
+            <div className="flex items-center gap-4">
+              {SOCIAL.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex size-9 items-center justify-center rounded-md border border-smoke/10 text-smoke/50 transition-colors hover:border-smoke/30 hover:text-smoke/90"
+                >
+                  <Icon size={18} aria-hidden="true" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2 — Pages */}
-          <nav aria-label="Footer navigation">
-            <p className="mb-4 text-eyebrow font-semibold tracking-[0.08em] text-smoke/40 uppercase">
-              Pages
-            </p>
-            <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-caption text-smoke/60 transition-opacity hover:text-smoke/90"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Separator className="bg-smoke/10" />
 
-          {/* Column 3 — Connect */}
-          <div className="flex flex-col gap-4">
-            <p className="text-eyebrow font-semibold tracking-[0.08em] text-smoke/40 uppercase">
-              Connect
-            </p>
-            <a
-              href="https://linkedin.com/company/cindariq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-caption text-smoke/60 transition-opacity hover:text-smoke/90"
-            >
-              LinkedIn
-            </a>
-            <p className="text-caption text-smoke/40">
-              Want occasional notes from us? Reach out to{" "}
-              <a
-                href="mailto:hello@cindariq.co.ke"
-                className="text-smoke/60 transition-opacity hover:text-smoke/90"
+          {/* Bottom bar */}
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <p className="text-caption text-smoke/40">© 2026 Cindariq Limited. Nairobi, Kenya.</p>
+            <div className="flex items-center gap-6">
+              <Link
+                href="/privacy"
+                className="text-caption text-smoke/40 transition-colors hover:text-smoke/70"
               >
-                hello@cindariq.co.ke
-              </a>
-            </p>
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-caption text-smoke/40 transition-colors hover:text-smoke/70"
+              >
+                Terms of Service
+              </Link>
+              <span className="cursor-not-allowed text-caption text-smoke/20" title="Coming soon">
+                Cookie Policy
+              </span>
+            </div>
           </div>
-        </div>
-
-        <Separator className="my-12 bg-smoke/10" />
-
-        {/* Compliance ribbon */}
-        <div className="flex flex-col gap-2">
-          <p className="text-caption text-smoke/40">
-            Cindariq Limited · Registered in Kenya, {companyReg} · NEMA Licence #{nemaLicence} ·
-            ODPC Reg #{odpcReg} (Controller &amp; Processor) · AGPO #{agpoNumber} · KRA PIN {kraPin}
-          </p>
-          <p className="text-caption text-smoke/30">
-            © 2026 Cindariq Limited. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

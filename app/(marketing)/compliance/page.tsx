@@ -13,9 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function CompliancePage() {
-  const odpc = process.env.ODPC_REG_NUMBER;
-  const nema = process.env.NEMA_LICENCE_NUMBER;
-
   return (
     <>
       {/* Page hero */}
@@ -62,11 +59,6 @@ export default function CompliancePage() {
               This registration is a precondition for sub-processor flow-down to all downstream
               NEMA-licensed partners.
             </p>
-            {odpc && (
-              <span className="mt-auto text-caption font-medium text-ember">
-                Registration: {odpc}
-              </span>
-            )}
           </div>
 
           {/* NEMA */}
@@ -77,9 +69,6 @@ export default function CompliancePage() {
               licence for collection, transportation, and processing of electrical and electronic
               equipment, and we require the same of all downstream partners before engaging them.
             </p>
-            {nema && (
-              <span className="mt-auto text-caption font-medium text-ember">Licence: {nema}</span>
-            )}
           </div>
 
           {/* NIST revision tracking */}

@@ -26,24 +26,6 @@ export function organizationJsonLd() {
       availableLanguage: ["English", "Swahili"],
     },
     sameAs: ["https://www.linkedin.com/company/cindariq"],
-    ...(process.env.KRA_PIN || process.env.COMPANY_REG_NUMBER
-      ? {
-          identifier: [
-            ...(process.env.KRA_PIN
-              ? [{ "@type": "PropertyValue", propertyID: "KRA PIN", value: process.env.KRA_PIN }]
-              : []),
-            ...(process.env.COMPANY_REG_NUMBER
-              ? [
-                  {
-                    "@type": "PropertyValue",
-                    propertyID: "Company Registration (Kenya BRS)",
-                    value: process.env.COMPANY_REG_NUMBER,
-                  },
-                ]
-              : []),
-          ],
-        }
-      : {}),
   };
 }
 

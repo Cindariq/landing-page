@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { ScrollObserver } from "@/components/layout/scroll-observer";
+import { ScrollToTop } from "@/components/layout/scroll-to-top";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,6 +20,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <MobileMenu />
       <main id="main-content">{children}</main>
       <SiteFooter />
+      <ScrollToTop />
     </>
   );
 }
