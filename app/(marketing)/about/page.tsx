@@ -3,6 +3,7 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
+import TeamShowcase from "@/components/ui/team-showcase";
 
 export const metadata: Metadata = {
   title: "About Cindariq — Engineering for Defensible Disposal",
@@ -137,35 +138,27 @@ export default function AboutPage() {
         </div>
       </SectionContainer>
 
-      {/* Founder */}
+      {/* Founding Team */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="founder-heading">
-        <Eyebrow>The founder</Eyebrow>
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[auto_1fr]">
-          {/* Portrait placeholder */}
-          <div
-            className="aspect-square w-full max-w-65 rounded-xl bg-cinder/10"
-            role="img"
-            aria-label="Founder portrait — photograph to follow"
-          />
-          {/* Bio */}
-          <div>
-            <h2 id="founder-heading" className="mb-1 text-h2 font-semibold text-cinder">
-              {/* TODO: Replace with founder name before launch */}
-              [Founder name]
-            </h2>
-            <p className="mb-6 text-caption font-semibold tracking-[0.06em] text-ash uppercase">
-              Founder, Cindariq Limited
-            </p>
-            <div className="max-w-150 space-y-4 text-body text-ash">
-              {/* TODO: Replace with founder biography before launch */}
-              <p>
-                [Founder biography — to be supplied before launch. This section will describe
-                relevant experience in IT asset management, compliance, and enterprise services,
-                along with the professional background that informs the Cindariq practice.]
-              </p>
-            </div>
-          </div>
-        </div>
+        <FadeUp>
+          <Eyebrow>The founding team</Eyebrow>
+        </FadeUp>
+        <FadeUp delay={0.12}>
+          <h2 id="founder-heading" className="mb-4 text-h2 font-semibold text-cinder">
+            Built for the work.
+          </h2>
+        </FadeUp>
+        <FadeUp delay={0.2}>
+          <p className="mb-12 max-w-150 text-body text-ash">
+            {/* TODO: Replace with accurate founding team biography before launch */}
+            Cindariq was built by practitioners with direct experience in enterprise IT operations,
+            compliance management, and regulated-sector procurement. The founding team brings
+            together the operational depth and regulatory knowledge the work demands.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.28}>
+          <TeamShowcase />
+        </FadeUp>
       </SectionContainer>
 
       <ClosingCTA />
