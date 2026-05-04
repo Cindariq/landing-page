@@ -25,16 +25,14 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-full w-full max-w-360 items-center justify-between px-6 md:px-10 lg:px-20">
-        {/* Logo */}
+        {/* Logo — anchored left */}
         <Link href="/" aria-label="Cindariq — go to home">
           <CindariqLogo height={36} colourMode="on-dark" />
         </Link>
 
-        {/* Desktop nav */}
-        <Nav className="hidden md:flex" />
-
-        {/* Desktop CTA — exactly one Ember element (AC §4.2) */}
-        <div className="hidden items-center md:flex">
+        {/* Desktop nav + CTA — grouped right */}
+        <div className="hidden items-center gap-10 md:flex">
+          <Nav />
           <Button size="sm" variant="primary" asChild>
             <Link href="/contact">Book a discovery call</Link>
           </Button>

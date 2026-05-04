@@ -10,10 +10,10 @@ import { useUIStore } from "@/lib/store/ui-store";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/compliance", label: "Compliance" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/case-studies", label: "Case studies" },
+  { href: "/insights", label: "Insights" },
 ] as const;
 
 /** Hamburger trigger — rendered inside SiteHeader on mobile. */
@@ -65,7 +65,7 @@ export function MobileMenu() {
                 "border-b border-smoke/10 py-4 text-h3 font-semibold text-smoke transition-opacity hover:opacity-70",
                 pathname.startsWith(href) && "text-ember",
               )}
-              aria-current={pathname === href ? "page" : undefined}
+              aria-current={pathname.startsWith(href) ? "page" : undefined}
             >
               {label}
             </Link>

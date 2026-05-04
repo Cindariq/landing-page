@@ -34,7 +34,13 @@ export function SectionContainer({
     <section
       id={id}
       aria-labelledby={ariaLabelledBy}
-      className={cn("w-full", backgroundClasses[background], paddingClasses[paddingY], className)}
+      className={cn(
+        "w-full",
+        backgroundClasses[background],
+        paddingClasses[paddingY],
+        id && "scroll-mt-20",
+        className,
+      )}
     >
       <div className="mx-auto max-w-360 px-6 md:px-10 lg:px-20">{children}</div>
     </section>

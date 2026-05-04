@@ -8,7 +8,7 @@ export function ClosingCTA() {
     <section
       id="closing-cta"
       aria-labelledby="closing-cta-heading"
-      className="relative w-full overflow-hidden bg-cinder py-32"
+      className="relative w-full scroll-mt-20 overflow-hidden bg-cinder py-32"
     >
       {/* Marquee watermark — blurred ember outline */}
       <div className="pointer-events-none absolute inset-0 flex flex-col justify-center opacity-50 blur-[2px] select-none">
