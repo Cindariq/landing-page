@@ -17,6 +17,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       </a>
       <SiteHeader />
       <main id="main-content">{children}</main>
+      <div className="h-1 w-full bg-ember/60" aria-hidden="true" />
       <SiteFooter />
       <ScrollToTop />
     </>
