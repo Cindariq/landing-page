@@ -3,6 +3,7 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ComplianceMap } from "@/components/sections/compliance-map";
 import { ClosingCTA } from "@/components/sections/closing-cta";
+import { FadeUp } from "@/components/motion/fade-up";
 
 export const metadata: Metadata = {
   title: "Compliance Standards — NIST 800-88, DPA 2019, GRI 306, ISO 14064",
@@ -19,14 +20,20 @@ export default function CompliancePage() {
     <>
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="compliance-page-heading">
-        <Eyebrow colour="smoke">Compliance</Eyebrow>
-        <h1 id="compliance-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-          Standards, named. Not gestured at.
-        </h1>
-        <p className="max-w-130 text-body-lg text-smoke/80">
-          Every Cindariq engagement produces evidence aligned to specific, named standards. We do
-          not describe our work in aspirational terms; we describe it in audit terms.
-        </p>
+        <FadeUp>
+          <Eyebrow colour="smoke">Compliance</Eyebrow>
+        </FadeUp>
+        <FadeUp delay={0.12}>
+          <h1 id="compliance-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
+            Standards, named. Not gestured at.
+          </h1>
+        </FadeUp>
+        <FadeUp delay={0.22}>
+          <p className="max-w-130 text-body-lg text-smoke/80">
+            Every Cindariq engagement produces evidence aligned to specific, named standards. We do
+            not describe our work in aspirational terms; we describe it in audit terms.
+          </p>
+        </FadeUp>
       </SectionContainer>
 
       {/* Three-standard panel (shared section component) */}
@@ -34,13 +41,17 @@ export default function CompliancePage() {
 
       {/* How we stay current */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="registrations-heading">
-        <Eyebrow>How we stay current</Eyebrow>
-        <h2
-          id="registrations-heading"
-          className="mb-12 max-w-140 text-h2 font-semibold text-cinder"
-        >
-          Registered, licensed, and accountable.
-        </h2>
+        <FadeUp>
+          <Eyebrow>How we stay current</Eyebrow>
+        </FadeUp>
+        <FadeUp delay={0.12}>
+          <h2
+            id="registrations-heading"
+            className="mb-12 max-w-140 text-h2 font-semibold text-cinder"
+          >
+            Registered, licensed, and accountable.
+          </h2>
+        </FadeUp>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* ODPC */}
           <div className="flex flex-col gap-4 rounded-xl border border-cinder/10 bg-parchment p-6">

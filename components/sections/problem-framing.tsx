@@ -1,6 +1,7 @@
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { FeatureCard } from "@/components/content/feature-card";
+import { FadeUp } from "@/components/motion/fade-up";
 
 const CARDS = [
   {
@@ -75,16 +76,20 @@ export function ProblemFraming() {
       id="problem-framing"
       ariaLabelledBy="problem-framing-heading"
     >
-      <Eyebrow>The work behind the work</Eyebrow>
-      <h2
-        id="problem-framing-heading"
-        className="mb-16 max-w-150 text-h2 font-semibold text-cinder"
-      >
-        Compliance proof you cannot generate today.
-      </h2>
+      <FadeUp>
+        <Eyebrow>The work behind the work</Eyebrow>
+      </FadeUp>
+      <FadeUp delay={0.12}>
+        <h2
+          id="problem-framing-heading"
+          className="mb-16 max-w-150 text-h2 font-semibold text-cinder"
+        >
+          Compliance proof you cannot generate today.
+        </h2>
+      </FadeUp>
       <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-        {CARDS.map(({ id, icon, title, body }) => (
-          <FeatureCard key={id} icon={icon} title={title} body={body} />
+        {CARDS.map(({ id, icon, title, body }, index) => (
+          <FeatureCard key={id} icon={icon} title={title} body={body} index={index} />
         ))}
       </div>
     </SectionContainer>

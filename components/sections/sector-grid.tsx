@@ -1,6 +1,7 @@
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { SectorTile } from "@/components/content/sector-tile";
+import { FadeUp } from "@/components/motion/fade-up";
 
 const TILES = [
   {
@@ -104,13 +105,23 @@ export function SectorGrid() {
       id="sector-grid"
       ariaLabelledBy="sector-grid-heading"
     >
-      <Eyebrow>Who Cindariq serves</Eyebrow>
-      <h2 id="sector-grid-heading" className="mb-16 max-w-125 text-h2 font-semibold text-cinder">
-        Where compliance proof is the deliverable.
-      </h2>
+      <FadeUp>
+        <Eyebrow>Who Cindariq serves</Eyebrow>
+      </FadeUp>
+      <FadeUp delay={0.12}>
+        <h2 id="sector-grid-heading" className="mb-16 max-w-125 text-h2 font-semibold text-cinder">
+          Where compliance proof is the deliverable.
+        </h2>
+      </FadeUp>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {TILES.map(({ id, icon, sector, description }) => (
-          <SectorTile key={id} icon={icon} sector={sector} description={description} />
+        {TILES.map(({ id, icon, sector, description }, index) => (
+          <SectorTile
+            key={id}
+            icon={icon}
+            sector={sector}
+            description={description}
+            index={index}
+          />
         ))}
       </div>
     </SectionContainer>

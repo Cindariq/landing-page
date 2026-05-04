@@ -1,4 +1,8 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { EASE_OUT_EXPO, VIEWPORT_ONCE } from "@/lib/animations";
 
 interface ProcessStepProps {
   number: 1 | 2 | 3 | 4 | 5;
@@ -7,6 +11,7 @@ interface ProcessStepProps {
   /** Show the horizontal connector line after this step (desktop only). Hide on the last step. */
   showConnector?: boolean;
   className?: string;
+  index?: number;
 }
 
 export function ProcessStep({
@@ -15,13 +20,20 @@ export function ProcessStep({
   body,
   showConnector = true,
   className,
+  index = 0,
 }: ProcessStepProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <div
+    <motion.div
       className={cn(
         "relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left",
         className,
       )}
+      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={VIEWPORT_ONCE}
+      transition={{ duration: 0.55, delay: index * 0.1, ease: EASE_OUT_EXPO }}
     >
       {/* Number badge + connector */}
       <div className="relative mb-6 flex items-center">
@@ -37,6 +49,6 @@ export function ProcessStep({
       </div>
       <h3 className="mb-2 text-h4 font-semibold text-smoke">{title}</h3>
       <p className="max-w-50 text-body text-smoke/70">{body}</p>
-    </div>
+    </motion.div>
   );
 }

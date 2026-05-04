@@ -1,6 +1,7 @@
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ProcessStep } from "@/components/content/process-step";
+import { FadeUp } from "@/components/motion/fade-up";
 
 const STEPS = [
   {
@@ -38,20 +39,25 @@ export function HowItWorks() {
       id="how-it-works"
       ariaLabelledBy="how-it-works-heading"
     >
-      <Eyebrow>How Cindariq works</Eyebrow>
-      <h2 id="how-it-works-heading" className="mb-16 max-w-150 text-h2 font-semibold text-smoke">
-        From your dock to a defensible record.
-      </h2>
+      <FadeUp>
+        <Eyebrow>How Cindariq works</Eyebrow>
+      </FadeUp>
+      <FadeUp delay={0.12}>
+        <h2 id="how-it-works-heading" className="mb-16 max-w-150 text-h2 font-semibold text-smoke">
+          From your dock to a defensible record.
+        </h2>
+      </FadeUp>
 
       {/* Steps — horizontal on desktop, stacked on mobile */}
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
-        {STEPS.map(({ number, title, body }) => (
+        {STEPS.map(({ number, title, body }, index) => (
           <ProcessStep
             key={number}
             number={number}
             title={title}
             body={body}
             showConnector={number < 5}
+            index={index}
           />
         ))}
       </div>

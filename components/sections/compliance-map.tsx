@@ -1,6 +1,7 @@
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ComplianceCard } from "@/components/content/compliance-card";
+import { FadeUp } from "@/components/motion/fade-up";
 
 const CARDS = [
   {
@@ -72,13 +73,20 @@ export function ComplianceMap() {
       id="compliance-map"
       ariaLabelledBy="compliance-map-heading"
     >
-      <Eyebrow colour="cinder">Compliance you do not have to translate</Eyebrow>
-      <h2 id="compliance-map-heading" className="mb-16 max-w-125 text-h2 font-semibold text-cinder">
-        Standards, named.
-      </h2>
+      <FadeUp>
+        <Eyebrow colour="cinder">Compliance you do not have to translate</Eyebrow>
+      </FadeUp>
+      <FadeUp delay={0.12}>
+        <h2
+          id="compliance-map-heading"
+          className="mb-16 max-w-125 text-h2 font-semibold text-cinder"
+        >
+          Standards, named.
+        </h2>
+      </FadeUp>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-        {CARDS.map(({ id, icon, title, body }) => (
-          <ComplianceCard key={id} icon={icon} title={title} body={body} />
+        {CARDS.map(({ id, icon, title, body }, index) => (
+          <ComplianceCard key={id} icon={icon} title={title} body={body} index={index} />
         ))}
       </div>
     </SectionContainer>

@@ -3,6 +3,7 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { ClosingCTA } from "@/components/sections/closing-cta";
+import { FadeUp } from "@/components/motion/fade-up";
 import { serviceJsonLd, jsonLdScript } from "@/lib/seo/jsonld";
 
 export const metadata: Metadata = {
@@ -39,14 +40,20 @@ export default function HowItWorksPage() {
       />
       {/* Page hero */}
       <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="hiw-page-heading">
-        <Eyebrow colour="smoke">How Cindariq works</Eyebrow>
-        <h1 id="hiw-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-          Five steps. One defensible record.
-        </h1>
-        <p className="max-w-130 text-body-lg text-smoke/80">
-          Every engagement follows the same structured process — consistent, documented, and built
-          to withstand scrutiny at every stage.
-        </p>
+        <FadeUp>
+          <Eyebrow colour="smoke">How Cindariq works</Eyebrow>
+        </FadeUp>
+        <FadeUp delay={0.12}>
+          <h1 id="hiw-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
+            Five steps. One defensible record.
+          </h1>
+        </FadeUp>
+        <FadeUp delay={0.22}>
+          <p className="max-w-130 text-body-lg text-smoke/80">
+            Every engagement follows the same structured process — consistent, documented, and built
+            to withstand scrutiny at every stage.
+          </p>
+        </FadeUp>
       </SectionContainer>
 
       {/* Five-step process (shared section component) */}
@@ -54,17 +61,26 @@ export default function HowItWorksPage() {
 
       {/* What we deliver */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="deliverables-heading">
-        <Eyebrow>What you receive</Eyebrow>
-        <h2 id="deliverables-heading" className="mb-16 max-w-140 text-h2 font-semibold text-cinder">
-          Three documents every audit needs.
-        </h2>
+        <FadeUp>
+          <Eyebrow>What you receive</Eyebrow>
+        </FadeUp>
+        <FadeUp delay={0.12}>
+          <h2
+            id="deliverables-heading"
+            className="mb-16 max-w-140 text-h2 font-semibold text-cinder"
+          >
+            Three documents every audit needs.
+          </h2>
+        </FadeUp>
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {DELIVERABLES.map(({ number, title, body }) => (
-            <div key={number} className="flex flex-col gap-4">
-              <span className="text-h3 font-bold text-ember/40">{number}</span>
-              <h3 className="text-h4 font-semibold text-cinder">{title}</h3>
-              <p className="text-body text-ash">{body}</p>
-            </div>
+          {DELIVERABLES.map(({ number, title, body }, index) => (
+            <FadeUp key={number} delay={index * 0.12}>
+              <div className="flex flex-col gap-4">
+                <span className="text-h3 font-bold text-ember/40">{number}</span>
+                <h3 className="text-h4 font-semibold text-cinder">{title}</h3>
+                <p className="text-body text-ash">{body}</p>
+              </div>
+            </FadeUp>
           ))}
         </div>
       </SectionContainer>
