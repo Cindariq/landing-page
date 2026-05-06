@@ -29,7 +29,7 @@ const steps = [
     label: "Recovery",
     title: "Vetted Recycler Network",
     body: "We connect only with licensed, verified downstream partners. No shortcuts. No unlicensed recyclers. Recovered value is returned to you; what cannot be recovered is disposed of responsibly.",
-    tags: ["Licensed partners", "ESG reporting", "R2 aligned"],
+    tags: ["Licensed partners", "Asset recovery value", "R2 aligned"],
   },
   {
     num: "05",
@@ -96,7 +96,7 @@ export function HowItWorks({ showHeading = true }: HowItWorksProps) {
                 {step.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-sm border border-steel/40 px-3 py-1 font-sans text-[0.65rem] font-medium tracking-widest text-smoke/50 uppercase"
+                    className="rounded-sm border border-ember/20 bg-ember/5 px-3 py-1 font-sans text-[0.65rem] font-medium tracking-widest text-ember/50 uppercase"
                   >
                     {tag}
                   </span>
