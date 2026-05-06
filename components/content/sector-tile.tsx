@@ -18,7 +18,7 @@ export function SectorTile({ icon, sector, description, className, index = 0 }: 
   return (
     <motion.div
       className={cn(
-        "flex flex-col gap-4 rounded-xl border border-steel/30 bg-smoke p-6",
+        "flex flex-col gap-4 bg-smoke p-6 transition-colors duration-300 hover:bg-parchment",
         className,
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 24 }}

@@ -84,7 +84,7 @@ export function ComplianceMap() {
           Standards, named.
         </h2>
       </FadeUp>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 md:grid-cols-3">
         {CARDS.map(({ id, icon, title, body }, index) => (
           <ComplianceCard key={id} icon={icon} title={title} body={body} index={index} />
         ))}

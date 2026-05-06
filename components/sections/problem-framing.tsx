@@ -87,7 +87,7 @@ export function ProblemFraming() {
           Compliance proof you cannot generate today.
         </h2>
       </FadeUp>
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10">
         {CARDS.map(({ id, icon, title, body }, index) => (
           <FeatureCard key={id} icon={icon} title={title} body={body} index={index} />
         ))}

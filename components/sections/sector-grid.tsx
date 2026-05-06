@@ -31,28 +31,6 @@ const TILES = [
       "Where DPA exposure and CBK climate disclosure converge — we close both gaps with the same engagement.",
   },
   {
-    id: "insurers",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M3 12a9 9 0 0 1 18 0H3z"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M12 12v6a2 2 0 0 1-4 0"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-    sector: "Insurers",
-    description:
-      "Policyholder-data devices retire continuously; audit readiness is a year-round posture.",
-  },
-  {
     id: "multinationals",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -95,6 +73,28 @@ const TILES = [
     description:
       "AGPO youth-enterprise eligible, PPDA-ready, Auditor-General-friendly documentation.",
   },
+  {
+    id: "insurers",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M3 12a9 9 0 0 1 18 0H3z"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 12v6a2 2 0 0 1-4 0"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    sector: "Insurers",
+    description:
+      "Policyholder-data devices retire continuously; audit readiness is a year-round posture.",
+  },
 ] as const;
 
 export function SectorGrid() {
@@ -113,7 +113,7 @@ export function SectorGrid() {
           Where compliance proof is the deliverable.
         </h2>
       </FadeUp>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 sm:grid-cols-2">
         {TILES.map(({ id, icon, sector, description }, index) => (
           <SectorTile
             key={id}

@@ -9,7 +9,7 @@ import { serviceJsonLd, jsonLdScript } from "@/lib/seo/jsonld";
 export const metadata: Metadata = {
   title: "How Cindariq Works — From Pickup to Audit-Ready Records",
   description:
-    "Five-stage IT asset disposition process: request, collect, sanitise, process, report. NIST 800-88-aligned with per-device certificates and chain of custody.",
+    "Six-stage IT asset disposition process: logistics, data destruction, platform logging, recovery, compliance, and reporting. NIST 800-88-aligned with per-device certificates and chain of custody.",
   alternates: { canonical: "/how-it-works" },
 };
 
@@ -17,17 +17,22 @@ const DELIVERABLES = [
   {
     number: "01",
     title: "Per-device sanitisation certificates",
-    body: "Each device leaves a documented NIST 800-88 outcome: method, tool version, operator, and timestamp. Individually referenced by serial number and delivered to your records platform.",
+    body: "Issued within 48 hours of processing. Each PDF references the device serial number, NIST 800-88 method applied, tool version, operator ID, and timestamp — in a format your DPO can file directly.",
   },
   {
     number: "02",
     title: "Chain of custody manifest",
-    body: "From collection at your dock to the final disposal certificate, every handover is recorded and signed. The manifest holds up in an Auditor-General review and is available on demand.",
+    body: "Generated in real-time by the platform at every handover point — from collection at your dock through to the final disposal receipt. Signed, timestamped, and structured to satisfy an Auditor-General review.",
   },
   {
     number: "03",
+    title: "Compliance documentation package",
+    body: "A consolidated record of regulatory alignment across Kenya DPA 2019, GDPR, PCI DSS, and ISO 27001 — formatted for your legal or compliance team and ready to attach to a regulatory submission or internal audit file.",
+  },
+  {
+    number: "04",
     title: "ESG and recovered-value report",
-    body: "GRI 306 and ISO 14064-aligned outputs delivered in the format your sustainability officer expects — including any recovered asset value returned to your organisation.",
+    body: "Delivered per engagement in GRI 306 and ISO 14064-aligned format. Covers waste diversion tonnage, carbon estimates, and any recovered asset value credited back to your organisation.",
   },
 ] as const;
 
@@ -45,7 +50,7 @@ export default function HowItWorksPage() {
         </FadeUp>
         <FadeUp delay={0.12}>
           <h1 id="hiw-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Five steps. One defensible record.
+            Six stages. One defensible record.
           </h1>
         </FadeUp>
         <FadeUp delay={0.22}>
@@ -56,8 +61,8 @@ export default function HowItWorksPage() {
         </FadeUp>
       </SectionContainer>
 
-      {/* Five-step process (shared section component) */}
-      <HowItWorks />
+      {/* Six-stage process (shared section component) */}
+      <HowItWorks showHeading={false} />
 
       {/* What we deliver */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="deliverables-heading">
@@ -67,12 +72,18 @@ export default function HowItWorksPage() {
         <FadeUp delay={0.12}>
           <h2
             id="deliverables-heading"
-            className="mb-16 max-w-140 text-h2 font-semibold text-cinder"
+            className="mb-6 max-w-140 text-h2 font-semibold text-cinder"
           >
-            Three documents every audit needs.
+            Every engagement. The same four artefacts.
           </h2>
         </FadeUp>
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <FadeUp delay={0.18}>
+          <p className="mb-16 max-w-130 text-body-lg text-ash">
+            Every engagement closes with the same four artefacts — each formatted for a specific
+            audience and available on-demand through the platform.
+          </p>
+        </FadeUp>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {DELIVERABLES.map(({ number, title, body }, index) => (
             <FadeUp key={number} delay={index * 0.12}>
               <div className="flex flex-col gap-4">

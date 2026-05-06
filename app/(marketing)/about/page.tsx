@@ -79,62 +79,54 @@ export default function AboutPage() {
             Compliance in our own operations.
           </h2>
         </FadeUp>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 sm:grid-cols-2 lg:grid-cols-4">
           {/* ODPC */}
-          <FadeUp delay={0.05}>
-            <div className="flex flex-col gap-3 rounded-xl border border-cinder/10 bg-smoke p-6">
-              <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
-                ODPC
-              </span>
-              <h3 className="text-h4 font-semibold text-cinder">Data Controller &amp; Processor</h3>
-              <p className="text-caption text-ash">
-                Registered with the Office of the Data Protection Commissioner as both Data
-                Controller and Data Processor under the Data Protection Act 2019.
-              </p>
-            </div>
-          </FadeUp>
+          <div className="flex flex-col gap-3 bg-smoke p-6 transition-colors duration-300 hover:bg-parchment">
+            <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
+              ODPC
+            </span>
+            <h3 className="text-h4 font-semibold text-cinder">Data Controller &amp; Processor</h3>
+            <p className="text-caption text-ash">
+              Registered with the Office of the Data Protection Commissioner as both Data Controller
+              and Data Processor under the Data Protection Act 2019.
+            </p>
+          </div>
 
           {/* NEMA */}
-          <FadeUp delay={0.15}>
-            <div className="flex flex-col gap-3 rounded-xl border border-cinder/10 bg-smoke p-6">
-              <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
-                NEMA
-              </span>
-              <h3 className="text-h4 font-semibold text-cinder">E-Waste Handling</h3>
-              <p className="text-caption text-ash">
-                NEMA-licensed for the collection, transportation, and processing of electrical and
-                electronic waste under the Environmental Management Act.
-              </p>
-            </div>
-          </FadeUp>
+          <div className="flex flex-col gap-3 bg-smoke p-6 transition-colors duration-300 hover:bg-parchment">
+            <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
+              NEMA
+            </span>
+            <h3 className="text-h4 font-semibold text-cinder">E-Waste Handling</h3>
+            <p className="text-caption text-ash">
+              NEMA-licensed for the collection, transportation, and processing of electrical and
+              electronic waste under the Environmental Management Act.
+            </p>
+          </div>
 
           {/* AGPO */}
-          <FadeUp delay={0.25}>
-            <div className="flex flex-col gap-3 rounded-xl border border-cinder/10 bg-smoke p-6">
-              <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
-                AGPO
-              </span>
-              <h3 className="text-h4 font-semibold text-cinder">Youth Enterprise</h3>
-              <p className="text-caption text-ash">
-                Certified under the Access to Government Procurement Opportunities programme.
-                PPDA-ready documentation available for public-sector procurement exercises.
-              </p>
-            </div>
-          </FadeUp>
+          <div className="flex flex-col gap-3 bg-smoke p-6 transition-colors duration-300 hover:bg-parchment">
+            <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
+              AGPO
+            </span>
+            <h3 className="text-h4 font-semibold text-cinder">Youth Enterprise</h3>
+            <p className="text-caption text-ash">
+              Certified under the Access to Government Procurement Opportunities programme.
+              PPDA-ready documentation available for public-sector procurement exercises.
+            </p>
+          </div>
 
           {/* Company registration */}
-          <FadeUp delay={0.35}>
-            <div className="flex flex-col gap-3 rounded-xl border border-cinder/10 bg-smoke p-6">
-              <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
-                Companies Act
-              </span>
-              <h3 className="text-h4 font-semibold text-cinder">Cindariq Limited</h3>
-              <p className="text-caption text-ash">
-                Registered in Kenya under the Companies Act 2015. Full corporate governance
-                documentation available on request.
-              </p>
-            </div>
-          </FadeUp>
+          <div className="flex flex-col gap-3 bg-smoke p-6 transition-colors duration-300 hover:bg-parchment">
+            <span className="text-caption font-semibold tracking-[0.06em] text-ash uppercase">
+              Companies Act
+            </span>
+            <h3 className="text-h4 font-semibold text-cinder">Cindariq Limited</h3>
+            <p className="text-caption text-ash">
+              Registered in Kenya under the Companies Act 2015. Full corporate governance
+              documentation available on request.
+            </p>
+          </div>
         </div>
       </SectionContainer>
 

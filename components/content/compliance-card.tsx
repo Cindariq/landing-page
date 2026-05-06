@@ -18,7 +18,7 @@ export function ComplianceCard({ icon, title, body, className, index = 0 }: Comp
   return (
     <motion.div
       className={cn(
-        "flex flex-col gap-5 rounded-xl border border-cinder/10 bg-parchment p-8",
+        "flex flex-col gap-5 bg-parchment p-8 transition-colors duration-300 hover:bg-smoke",
         className,
       )}
       initial={reduceMotion ? false : { opacity: 0, y: 24 }}
