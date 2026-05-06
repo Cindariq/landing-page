@@ -24,48 +24,42 @@ const DEFAULT_MEMBERS: TeamMember[] = [
     id: "1",
     name: "[Founder Name]",
     role: "Founder & Chief Executive",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#", twitter: "#" },
   },
   {
     id: "2",
     name: "[Co-founder Name]",
     role: "Co-founder & Head of Operations",
-    image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b0e8?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#" },
   },
   {
     id: "3",
     name: "[Head of Compliance]",
     role: "Head of Compliance",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#" },
   },
   {
     id: "4",
     name: "[Head of Logistics]",
     role: "Head of Secure Logistics",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#" },
   },
   {
     id: "5",
     name: "[ESG Lead]",
     role: "ESG Reporting Lead",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#", twitter: "#" },
   },
   {
     id: "6",
     name: "[Client Relations]",
     role: "Client Relations",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop&crop=face",
+    image: "/placeholder.png",
     social: { linkedin: "#" },
   },
 ];
@@ -77,14 +71,16 @@ interface TeamShowcaseProps {
 export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcaseProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
+  const handleToggle = (id: string) => setHoveredId((prev) => (prev === id ? null : id));
+
   const col1 = members.filter((_, i) => i % 3 === 0);
   const col2 = members.filter((_, i) => i % 3 === 1);
   const col3 = members.filter((_, i) => i % 3 === 2);
 
   return (
     <div className="flex w-full flex-col items-start gap-8 px-0 py-8 font-sans select-none md:flex-row md:gap-10 lg:gap-14">
-      {/* Photo grid */}
-      <div className="flex shrink-0 gap-2 overflow-x-auto pb-1 md:gap-3 md:pb-0">
+      {/* Photo grid — hidden on mobile */}
+      <div className="hidden shrink-0 gap-2 md:flex md:gap-3">
         {/* Column 1 */}
         <div className="flex flex-col gap-2 md:gap-3">
           {col1.map((member) => (
@@ -94,6 +90,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
               className="h-44 w-40 sm:h-52 sm:w-48 md:h-60 md:w-56"
               hoveredId={hoveredId}
               onHover={setHoveredId}
+              onToggle={handleToggle}
             />
           ))}
         </div>
@@ -107,6 +104,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
               className="h-48 w-44 sm:h-56 sm:w-52 md:h-64 md:w-60"
               hoveredId={hoveredId}
               onHover={setHoveredId}
+              onToggle={handleToggle}
             />
           ))}
         </div>
@@ -120,15 +118,22 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
               className="h-46 w-42 sm:h-54 sm:w-50 md:h-62 md:w-58"
               hoveredId={hoveredId}
               onHover={setHoveredId}
+              onToggle={handleToggle}
             />
           ))}
         </div>
       </div>
 
       {/* Member name list */}
-      <div className="flex flex-1 flex-col gap-4 pt-0 sm:grid sm:grid-cols-2 md:flex md:flex-col md:gap-5 md:pt-2">
+      <div className="flex flex-1 flex-col gap-4 pt-0 md:gap-5 md:pt-2">
         {members.map((member) => (
-          <MemberRow key={member.id} member={member} hoveredId={hoveredId} onHover={setHoveredId} />
+          <MemberRow
+            key={member.id}
+            member={member}
+            hoveredId={hoveredId}
+            onHover={setHoveredId}
+            onToggle={handleToggle}
+          />
         ))}
       </div>
     </div>
@@ -144,11 +149,13 @@ function PhotoCard({
   className,
   hoveredId,
   onHover,
+  onToggle,
 }: {
   member: TeamMember;
   className: string;
   hoveredId: string | null;
   onHover: (id: string | null) => void;
+  onToggle: (id: string) => void;
 }) {
   const isActive = hoveredId === member.id;
   const isDimmed = hoveredId !== null && !isActive;
@@ -162,6 +169,7 @@ function PhotoCard({
       )}
       onMouseEnter={() => onHover(member.id)}
       onMouseLeave={() => onHover(null)}
+      onClick={() => onToggle(member.id)}
     >
       <Image
         src={member.image}
@@ -185,10 +193,12 @@ function MemberRow({
   member,
   hoveredId,
   onHover,
+  onToggle,
 }: {
   member: TeamMember;
   hoveredId: string | null;
   onHover: (id: string | null) => void;
+  onToggle: (id: string) => void;
 }) {
   const isActive = hoveredId === member.id;
   const isDimmed = hoveredId !== null && !isActive;
@@ -206,6 +216,7 @@ function MemberRow({
       )}
       onMouseEnter={() => onHover(member.id)}
       onMouseLeave={() => onHover(null)}
+      onClick={() => onToggle(member.id)}
     >
       {/* Name + social icons */}
       <div className="flex items-center gap-2.5">
