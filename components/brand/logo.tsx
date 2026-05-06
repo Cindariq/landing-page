@@ -15,9 +15,9 @@ const colourMap = {
 
 /**
  * Q-mark SVG — 100×100 viewBox
- * Circle: cx=44 cy=44 r=30 strokeWidth=8 (outer radius 48)
- * Tail: starts at circle boundary at ~35° from horizontal (x=69, y=61),
- *       extends at 35° to (x=85, y=73). Per PRD §5.2.
+ * Arc: 320° circle (center 44,44 r=30) with a gap at ~5 o'clock (40°–80° from 3 o'clock).
+ * Tail: crosses through the gap from inside the bowl (52,57) to outside (67,83),
+ *       passing through the ring at ~(59,70) — classic typographic cross-through Q.
  * TODO: Replace with designer-delivered SVG per Document 08 §4.1.
  */
 function QMark({ className, size }: { className?: string; size: number }) {
@@ -31,12 +31,20 @@ function QMark({ className, size }: { className?: string; size: number }) {
       height={size}
       className={className}
     >
-      <circle cx="44" cy="44" r="30" stroke="currentColor" strokeWidth="8" />
+      {/* 320° arc — gap centred at 4:30 (45°) where the tail crosses through */}
+      <path
+        d="M 71 57 A 30 30 0 1 0 57 71"
+        stroke="currentColor"
+        strokeWidth="8"
+        strokeLinecap="round"
+        fill="none"
+      />
+      {/* Tail at exactly 45° — equal Δx and Δy — crossing through the ring gap */}
       <line
-        x1="69"
-        y1="61"
-        x2="85"
-        y2="73"
+        x1="55"
+        y1="55"
+        x2="75"
+        y2="75"
         stroke="currentColor"
         strokeWidth="8"
         strokeLinecap="round"
