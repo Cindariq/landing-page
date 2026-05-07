@@ -593,3 +593,17 @@ body {
 .loader-3 .box7 > div {
   animation-name: box-scale7;
 }
+
+/* SVG animation pivot helpers — used by service-illustrations.tsx */
+.svg-pivot-c {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.svg-pivot-b {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.svg-pivot-l {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+}

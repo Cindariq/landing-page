@@ -4,11 +4,11 @@ import { Separator } from "@/components/ui/separator";
 import { LinkedinLogo, XLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
 const SERVICES = [
-  { href: "/how-it-works", label: "Data Destruction" },
-  { href: "/how-it-works", label: "Secure Logistics" },
-  { href: "/how-it-works", label: "Compliance Platform" },
-  { href: "/how-it-works", label: "Circular Recovery" },
-  { href: "/how-it-works", label: "ESG Reporting" },
+  { href: "/services#data-destruction", label: "Data Destruction" },
+  { href: "/services#secure-logistics", label: "Secure Logistics" },
+  { href: "/services#compliance-platform", label: "Compliance Platform" },
+  { href: "/services#circular-recovery", label: "Circular Recovery" },
+  { href: "/services#esg-reporting", label: "ESG Reporting" },
 ] as const;
 
 const COMPANY = [

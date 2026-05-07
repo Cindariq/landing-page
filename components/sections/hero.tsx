@@ -81,11 +81,6 @@ export function Hero() {
                 </svg>
               </Link>
             </motion.div>
-
-            <motion.p className="text-caption text-smoke/35" {...motion_props(0.66)}>
-              Single device to full fleet &#183; Certificates within 48 hours &#183;{" "}
-              Nairobi&#8209;based, East Africa
-            </motion.p>
           </div>
 
           {/* 3D falling-boxes — decorative, mirrors staircase headline */}
