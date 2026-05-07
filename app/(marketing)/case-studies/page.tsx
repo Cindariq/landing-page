@@ -4,6 +4,7 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { Button } from "@/components/ui/button";
 import { FadeUp } from "@/components/motion/fade-up";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "Case Studies — Cindariq",
@@ -17,23 +18,12 @@ export default function CaseStudiesPage() {
   return (
     <>
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="lg" ariaLabelledBy="case-studies-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">Case Studies</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="case-studies-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Evidence, not anecdote.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="max-w-130 text-body-lg text-smoke/80">
-            Each engagement Cindariq completes produces a documented record — per-device
-            sanitisation certificates, a chain of custody manifest, and ESG outputs aligned to GRI
-            306. This section will publish those records when client references are confirmed.
-          </p>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="Case Studies"
+        headingId="case-studies-heading"
+        heading="Evidence, not anecdote."
+        body="Each engagement Cindariq completes produces a documented record — per-device sanitisation certificates, a chain of custody manifest, and ESG outputs aligned to GRI 306. This section will publish those records when client references are confirmed."
+      />
 
       {/* Coming soon notice */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="coming-soon-heading">

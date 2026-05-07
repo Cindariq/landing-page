@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/content/eyebrow";
 import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
 import TeamShowcase from "@/components/ui/team-showcase";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "About Cindariq — Engineering for Defensible Disposal",
@@ -15,24 +16,12 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="about-page-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">About Cindariq</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="about-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Serious work. Verifiable outcomes.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="max-w-130 text-body-lg text-smoke/80">
-            Cindariq is a Nairobi-based IT asset disposition company serving regulated enterprises
-            and public bodies in Kenya. We exist to make compliance proof a deliverable, not an
-            afterthought.
-          </p>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="About Cindariq"
+        headingId="about-page-heading"
+        heading="Serious work. Verifiable outcomes."
+        body="Cindariq is a Nairobi-based IT asset disposition company serving regulated enterprises and public bodies in Kenya. We exist to make compliance proof a deliverable, not an afterthought."
+      />
 
       {/* Company narrative */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="narrative-heading">

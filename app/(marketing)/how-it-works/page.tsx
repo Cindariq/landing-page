@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
 import { serviceJsonLd, jsonLdScript } from "@/lib/seo/jsonld";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "How Cindariq Works — From Pickup to Audit-Ready Records",
@@ -44,22 +45,12 @@ export default function HowItWorksPage() {
         dangerouslySetInnerHTML={{ __html: jsonLdScript(serviceJsonLd()) }}
       />
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="hiw-page-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">How Cindariq works</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="hiw-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Six stages. One defensible record.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="max-w-130 text-body-lg text-smoke/80">
-            Every engagement follows the same structured process — consistent, documented, and built
-            to withstand scrutiny at every stage.
-          </p>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="How Cindariq works"
+        headingId="hiw-page-heading"
+        heading="Six stages. One defensible record."
+        body="Every engagement follows the same structured process — consistent, documented, and built to withstand scrutiny at every stage."
+      />
 
       {/* Six-stage process (shared section component) */}
       <HowItWorks showHeading={false} />

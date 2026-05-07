@@ -4,6 +4,7 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { Button } from "@/components/ui/button";
 import { FadeUp } from "@/components/motion/fade-up";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "Insights — Cindariq",
@@ -17,23 +18,12 @@ export default function InsightsPage() {
   return (
     <>
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="lg" ariaLabelledBy="insights-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">Insights</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="insights-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Written for practitioners.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="max-w-130 text-body-lg text-smoke/80">
-            Analysis on data protection compliance, IT asset disposition practice, and ESG reporting
-            obligations for regulated enterprises in Kenya. Written without jargon, with named
-            standards.
-          </p>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="Insights"
+        headingId="insights-heading"
+        heading="Written for practitioners."
+        body="Analysis on data protection compliance, IT asset disposition practice, and ESG reporting obligations for regulated enterprises in Kenya. Written without jargon, with named standards."
+      />
 
       {/* Coming soon notice */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="insights-coming-heading">

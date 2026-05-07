@@ -5,6 +5,7 @@ import { Eyebrow } from "@/components/content/eyebrow";
 import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/sections/page-hero";
 
 import {
   IllustrationDataDestruction,
@@ -93,27 +94,16 @@ export default function ServicesPage() {
   return (
     <>
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="services-page-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">What we do</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="services-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Five services. One defensible record.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="mb-10 max-w-130 text-body-lg text-smoke/80">
-            Every Cindariq engagement is built on the same infrastructure — structured, documented,
-            and designed to hold up under regulatory scrutiny. No assembly required on your end.
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.3}>
-          <Button asChild variant="primary" size="lg">
-            <Link href="/contact">Book a discovery call</Link>
-          </Button>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="What we do"
+        headingId="services-page-heading"
+        heading="Five services. One defensible record."
+        body="Every Cindariq engagement is built on the same infrastructure — structured, documented, and designed to hold up under regulatory scrutiny. No assembly required on your end."
+      >
+        <Button asChild variant="primary" size="lg">
+          <Link href="/contact">Book a discovery call</Link>
+        </Button>
+      </PageHero>
 
       {/* Service sections */}
       {SERVICES.map(({ id, eyebrow, heading, body, tags, background, eyebrowColour }, index) => {

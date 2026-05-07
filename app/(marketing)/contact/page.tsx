@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ContactForm } from "@/components/sections/contact-form";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "Contact Cindariq — Book a Discovery Call",
@@ -14,16 +15,12 @@ export default function ContactPage() {
   return (
     <>
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="contact-page-heading">
-        <Eyebrow colour="smoke">Get in touch</Eyebrow>
-        <h1 id="contact-page-heading" className="mb-6 max-w-145 text-h1 font-bold text-smoke">
-          Start with a conversation.
-        </h1>
-        <p className="max-w-120 text-body-lg text-smoke/80">
-          Fill in the form below and we will be in touch within one business day. If you prefer to
-          book time directly, the calendar link is on the right.
-        </p>
-      </SectionContainer>
+      <PageHero
+        eyebrow="Get in touch"
+        headingId="contact-page-heading"
+        heading="Start with a conversation."
+        body="Fill in the form below and we will be in touch within one business day. If you prefer to book time directly, the calendar link is on the right."
+      />
 
       {/* Form + sidebar */}
       <SectionContainer background="smoke" paddingY="lg">
