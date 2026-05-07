@@ -107,8 +107,12 @@ export function ContactForm() {
           We will be in touch within one business day. If you would prefer to speak sooner, use the
           calendar link to book directly.
         </p>
-        {/* TODO: Replace href with actual Cal.com / Calendly URL (OPEN-03) */}
-        <a href="#" className="text-body font-medium text-ember underline-offset-4 hover:underline">
+        <a
+          href="https://calendly.com/cindariq"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-body font-medium text-ember underline-offset-4 hover:underline"
+        >
           Open booking calendar
         </a>
       </div>

@@ -40,9 +40,10 @@ export default function ContactPage() {
                   Use the calendar link to schedule a 45-minute discovery call at a time that suits
                   you. No preparation required on your side.
                 </p>
-                {/* TODO: Replace href with actual Cal.com / Calendly URL (OPEN-03) */}
                 <a
-                  href="#"
+                  href="https://calendly.com/cindariq"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-body font-medium text-ember underline-offset-4 hover:underline"
                 >
                   Open booking calendar

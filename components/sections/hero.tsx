@@ -48,9 +48,9 @@ export function Hero() {
               {...motion_props(0.46)}
             >
               <p>
-                Cindariq applies certified, intelligent processes to your retired IT equipment so
-                the data is destroyed, the records survive an audit, and your sustainability report
-                has the numbers it needs.
+                We collect your retired IT equipment, destroy the data to NIST SP 800-88 Rev. 2, and
+                issue the sanitisation certificates and chain-of-custody records your auditors and
+                ESG report require.
               </p>
             </motion.div>
 
@@ -81,6 +81,11 @@ export function Hero() {
                 </svg>
               </Link>
             </motion.div>
+
+            <motion.p className="text-caption text-smoke/35" {...motion_props(0.66)}>
+              Single device to full fleet &#183; Certificates within 48 hours &#183;{" "}
+              Nairobi&#8209;based, East Africa
+            </motion.p>
           </div>
 
           {/* 3D falling-boxes — decorative, mirrors staircase headline */}

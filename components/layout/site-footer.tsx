@@ -14,8 +14,8 @@ const SERVICES = [
 const COMPANY = [
   { href: "/about", label: "About Us" },
   { href: "/compliance", label: "Our Standards" },
-  { href: "/about", label: "Partners" },
-  { href: "/contact", label: "Careers" },
+  { href: "/coming-soon", label: "Partners" },
+  { href: "/coming-soon", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -92,9 +92,9 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <FooterColumn heading="Services" links={SERVICES} />
           <FooterColumn heading="Company" links={COMPANY} />
           <FooterColumn heading="Compliance" links={COMPLIANCE_LINKS} />
+          <FooterColumn heading="Services" links={SERVICES} />
         </div>
 
         {/* Social + bottom bar */}

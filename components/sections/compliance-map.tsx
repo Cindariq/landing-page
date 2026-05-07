@@ -5,27 +5,6 @@ import { FadeUp } from "@/components/motion/fade-up";
 
 const CARDS = [
   {
-    id: "nist",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path
-          d="M16 3L28 9.5v13L16 29 4 22.5v-13L16 3z"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M16 3v26M28 9.5L4 22.5M4 9.5l24 13"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeOpacity="0.6"
-        />
-      </svg>
-    ),
-    title: "NIST SP 800-88 Rev. 2",
-    body: "The US standard for media sanitisation, current from September 2025. Every device receives a documented Clear, Purge, or Destroy outcome with method and tool version recorded.",
-  },
-  {
     id: "dpa",
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -41,6 +20,28 @@ const CARDS = [
     ),
     title: "Data Protection Act 2019 (Kenya)",
     body: "We are ODPC-registered as both Data Controller and Data Processor. Breach notification readiness within 72 hours of awareness. Sub-processor flow-down to all NEMA-licensed partners.",
+  },
+  {
+    id: "gdpr",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path
+          d="M16 4l10 4v8c0 6-4.5 11-10 13C10.5 27 6 22 6 16V8l10-4z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 16l3 3 5-5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+    title: "GDPR (EU 2016/679)",
+    body: "Multinational subsidiaries under GDPR data-minimisation (Art. 5(1)(e)) and right-to-erasure mandates (Art. 17) receive per-device certificates as documented evidence of compliant disposal. Sub-processor agreements available under Art. 28.",
   },
   {
     id: "gri",
@@ -63,6 +64,27 @@ const CARDS = [
     title: "GRI 306 + ISO 14064",
     body: "Every engagement produces audit-ready outputs aligned to GRI 306 (Waste) and ISO 14064 (GHG quantification). Drops into your ESG reporting workflow without manual reformatting.",
   },
+  {
+    id: "nist",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path
+          d="M16 3L28 9.5v13L16 29 4 22.5v-13L16 3z"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16 3v26M28 9.5L4 22.5M4 9.5l24 13"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeOpacity="0.6"
+        />
+      </svg>
+    ),
+    title: "NIST SP 800-88 Rev. 2",
+    body: "The US standard for media sanitisation, current from September 2025. Every device receives a documented Clear, Purge, or Destroy outcome with method and tool version recorded.",
+  },
 ] as const;
 
 export function ComplianceMap() {
@@ -84,7 +106,7 @@ export function ComplianceMap() {
           Standards, named.
         </h2>
       </FadeUp>
-      <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 md:grid-cols-2 lg:grid-cols-4">
         {CARDS.map(({ id, icon, title, body }, index) => (
           <ComplianceCard key={id} icon={icon} title={title} body={body} index={index} />
         ))}

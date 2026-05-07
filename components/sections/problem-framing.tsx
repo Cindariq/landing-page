@@ -24,7 +24,7 @@ const CARDS = [
       </svg>
     ),
     title: "Per-device evidence, not tonnage",
-    body: "Your existing recycler reports tonnes diverted. Your DPO needs per-device evidence of NIST 800-88 sanitisation. Your sustainability officer needs GRI 306-aligned outputs. The gap is where Cindariq operates.",
+    body: "Your existing recycler reports tonnes diverted. Your Data Protection Officer needs per-device evidence of NIST 800-88 sanitisation. Your sustainability officer needs GRI 306-aligned outputs. The gap is where Cindariq operates.",
   },
   {
     id: "risk",

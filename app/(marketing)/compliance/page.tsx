@@ -49,9 +49,9 @@ export default function CompliancePage() {
             Registered, licensed, and accountable.
           </h2>
         </FadeUp>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 md:grid-cols-3">
           {/* ODPC */}
-          <div className="flex flex-col gap-4 rounded-xl border border-cinder/10 bg-parchment p-6">
+          <div className="flex flex-col gap-4 bg-smoke p-8 transition-colors duration-300 hover:bg-parchment">
             <h3 className="text-h4 font-semibold text-cinder">ODPC registration</h3>
             <p className="text-body text-ash">
               Cindariq holds active registration with the Office of the Data Protection Commissioner
@@ -62,7 +62,7 @@ export default function CompliancePage() {
           </div>
 
           {/* NEMA */}
-          <div className="flex flex-col gap-4 rounded-xl border border-cinder/10 bg-parchment p-6">
+          <div className="flex flex-col gap-4 bg-smoke p-8 transition-colors duration-300 hover:bg-parchment">
             <h3 className="text-h4 font-semibold text-cinder">NEMA licensing</h3>
             <p className="text-body text-ash">
               E-waste handling in Kenya requires an active NEMA licence. Cindariq holds the relevant
@@ -72,7 +72,7 @@ export default function CompliancePage() {
           </div>
 
           {/* NIST revision tracking */}
-          <div className="flex flex-col gap-4 rounded-xl border border-cinder/10 bg-parchment p-6">
+          <div className="flex flex-col gap-4 bg-smoke p-8 transition-colors duration-300 hover:bg-parchment">
             <h3 className="text-h4 font-semibold text-cinder">Standard revision tracking</h3>
             <p className="text-body text-ash">
               NIST SP 800-88 Rev. 2 has been the current revision since September 2025. We monitor
