@@ -9,12 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CindariqLogo } from "@/components/brand/logo";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/case-studies", label: "Case studies" },
-  { href: "/insights", label: "Insights" },
-] as const;
+import { MAIN_NAV_LINKS } from "./nav";
 
 /** Self-contained mobile menu: hamburger trigger + slide-in Sheet panel. */
 export function MobileMenu() {
@@ -60,7 +55,7 @@ export function MobileMenu() {
 
         {/* Nav links */}
         <nav aria-label="Mobile navigation" className="flex flex-1 flex-col px-6 pt-8">
-          {NAV_LINKS.map(({ href, label }) => (
+          {MAIN_NAV_LINKS.map(({ href, label }) => (
             <SheetClose asChild key={href}>
               <Link
                 href={href}

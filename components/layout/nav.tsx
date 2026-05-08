@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const NAV_LINKS = [
+export const MAIN_NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/case-studies", label: "Case studies" },
@@ -22,7 +22,7 @@ export function Nav({ onLight = false, className, onLinkClick }: NavProps) {
 
   return (
     <nav aria-label="Main navigation" className={cn("flex items-center gap-10", className)}>
-      {NAV_LINKS.map(({ href, label }) => {
+      {MAIN_NAV_LINKS.map(({ href, label }) => {
         const active = pathname.startsWith(href);
         return (
           <Link

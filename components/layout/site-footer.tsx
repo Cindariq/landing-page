@@ -66,7 +66,7 @@ function FooterColumn({
           <li key={label}>
             <Link
               href={href}
-              className="text-caption text-smoke/50 transition-colors hover:text-smoke/90"
+              className="text-caption text-smoke/50 transition-colors hover:text-ember"
             >
               {label}
             </Link>
@@ -82,7 +82,7 @@ export function SiteFooter() {
     <footer className="w-full bg-cinder" aria-label="Site footer">
       <div className="mx-auto max-w-360 px-6 py-16 md:px-10 lg:px-20">
         {/* Top grid — brand + three nav columns */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           {/* Brand column */}
           <div className="flex flex-col gap-5">
             <CindariqLogo height={32} colourMode="on-dark" />
@@ -111,7 +111,7 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex size-9 items-center justify-center rounded-md border border-smoke/10 text-smoke/50 transition-colors hover:border-smoke/30 hover:text-smoke/90"
+                  className="flex size-9 items-center justify-center rounded-md border border-smoke/10 text-smoke/50 transition-all hover:border-smoke/30 hover:bg-smoke/5 hover:text-smoke/90"
                 >
                   <Icon size={18} aria-hidden="true" />
                 </a>
