@@ -5,6 +5,7 @@ import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
 import TeamShowcase from "@/components/ui/team-showcase";
 import { PageHero } from "@/components/sections/page-hero";
+import { CindariqLogo } from "@/components/brand/logo";
 
 export const metadata: Metadata = {
   title: "About Cindariq — Engineering for Defensible Disposal",
@@ -25,34 +26,48 @@ export default function AboutPage() {
 
       {/* Company narrative */}
       <SectionContainer background="smoke" paddingY="lg" ariaLabelledBy="narrative-heading">
-        <FadeUp>
-          <Eyebrow>Our focus</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h2 id="narrative-heading" className="mb-8 max-w-140 text-h2 font-semibold text-cinder">
-            The gap no recycler fills.
-          </h2>
-        </FadeUp>
-        <FadeUp delay={0.2}>
-          <div className="max-w-170 space-y-5 text-body text-ash">
-            <p>
-              Most enterprise IT refresh cycles end with equipment handed to a logistics contractor
-              who issues a tonnage report. The tonnage report satisfies no audit, protects no DPO,
-              and cannot be cited in a GRI 306 disclosure.
-            </p>
-            <p>
-              Cindariq was established to fill that gap — not as a recycler that adds compliance
-              language, but as a compliance-first ITAD operator. Every engagement produces
-              per-device evidence of NIST 800-88 sanitisation, a chain of custody manifest, and ESG
-              outputs aligned to GRI 306 and ISO 14064.
-            </p>
-            <p>
-              We work with banks, insurers, multinational subsidiaries, and public-sector bodies
-              whose procurement and risk functions require something a tonnage certificate cannot
-              provide: a record that holds up in an audit room.
-            </p>
+        <div className="flex flex-col gap-12 md:flex-row md:items-stretch md:gap-16">
+          {/* Left column: eyebrow, heading, body */}
+          <div className="flex flex-1 flex-col gap-6">
+            <div>
+              <FadeUp>
+                <Eyebrow>Our focus</Eyebrow>
+              </FadeUp>
+              <FadeUp delay={0.12}>
+                <h2 id="narrative-heading" className="text-h2 font-semibold text-cinder">
+                  The gap no recycler fills.
+                </h2>
+              </FadeUp>
+            </div>
+            <FadeUp delay={0.2}>
+              <div className="space-y-5 text-body text-ash">
+                <p>
+                  Most enterprise IT refresh cycles end with equipment handed to a logistics
+                  contractor who issues a tonnage report. The tonnage report satisfies no audit,
+                  protects no DPO, and cannot be cited in a GRI 306 disclosure.
+                </p>
+                <p>
+                  Cindariq was established to fill that gap — not as a recycler that adds compliance
+                  language, but as a compliance-first ITAD operator. Every engagement produces
+                  per-device evidence of NIST 800-88 sanitisation, a chain of custody manifest, and
+                  ESG outputs aligned to GRI 306 and ISO 14064.
+                </p>
+                <p>
+                  We work with banks, insurers, multinational subsidiaries, and public-sector bodies
+                  whose procurement and risk functions require something a tonnage certificate
+                  cannot provide: a record that holds up in an audit room.
+                </p>
+              </div>
+            </FadeUp>
           </div>
-        </FadeUp>
+          {/* Right column: logo spanning full content height */}
+          <FadeUp
+            delay={0.2}
+            className="hidden items-center justify-center md:flex md:w-72 lg:w-96"
+          >
+            <CindariqLogo height={320} colourMode="ember-accent" layout="qmark-only" />
+          </FadeUp>
+        </div>
       </SectionContainer>
 
       {/* Credentials */}
