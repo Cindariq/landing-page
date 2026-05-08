@@ -116,7 +116,7 @@ export function ComplianceMap({ showLink = false }: ComplianceMapProps = {}) {
           <FadeUp delay={0.22}>
             <Button asChild variant="secondary">
               <Link href="/compliance">
-                Read compliance statement
+                Explore our standards
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </Button>

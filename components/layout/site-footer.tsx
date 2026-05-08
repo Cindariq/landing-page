@@ -20,11 +20,10 @@ const COMPANY = [
 ] as const;
 
 const COMPLIANCE_LINKS = [
-  { href: "/compliance", label: "NIST 800-88" },
-  { href: "/compliance", label: "Kenya DPA" },
-  { href: "/compliance", label: "GDPR" },
-  { href: "/compliance", label: "PCI DSS" },
-  { href: "/compliance", label: "ISO 27001" },
+  { href: "/compliance#data-destruction", label: "Data Destruction" },
+  { href: "/compliance#data-privacy", label: "Data Privacy" },
+  { href: "/compliance#esg-reporting", label: "ESG Reporting" },
+  { href: "/compliance#corporate-governance", label: "Corporate Governance" },
 ] as const;
 
 const SOCIAL = [
