@@ -473,9 +473,12 @@ export function IllustrationDPA({ onDark }: { onDark: boolean }) {
         return (
           <motion.circle
             key={`pkt-${i}`}
+            cx={from.cx}
+            cy={from.cy}
             r="3.5"
             fill={accent}
             filter="url(#glow-dpa)"
+            initial={{ cx: from.cx, cy: from.cy }}
             animate={{
               cx: [from.cx, to.cx],
               cy: [from.cy, to.cy],
