@@ -11,14 +11,20 @@ const useThemeColors = (onDark: boolean) => ({
 
 /* ─────────────────────────────────────────────────────────────────────────
    01 — NIST SP 800-88 Rev. 2  (IllustrationNIST)
-   A forensic scanner rig with three stacked media bays. An audit beam
-   sweeps vertically across each bay. Once verified, a per-device
-   Certificate of Data Destruction (CoDD) slides out below with a
-   stamped wax-seal checkmark, serial-number lines, and a method tag.
+   A sanitisation decision tree. A single storage device icon at top
+   branches into three outcome columns: CLEAR (dashed path, low weight),
+   PURGE (solid accent path, medium weight), DESTROY (bold path, high
+   weight). Each column has an outcome badge. A per-device Certificate of
+   Data Destruction slides up at the bottom with a wax seal and method tag.
 ───────────────────────────────────────────────────────────────────────────*/
 export function IllustrationNIST({ onDark }: { onDark: boolean }) {
   const { stroke, accent, muted } = useThemeColors(onDark);
-  const bays = [{ y: 52 }, { y: 100 }, { y: 148 }];
+
+  const outcomes = [
+    { x: 84, label: "CLEAR", dash: "6 4", sw: 1.5, accentCol: false, delay: 0.55 },
+    { x: 200, label: "PURGE", dash: "", sw: 2.0, accentCol: true, delay: 0.7 },
+    { x: 316, label: "DESTROY", dash: "", sw: 2.5, accentCol: false, delay: 0.85 },
+  ] as const;
 
   return (
     <svg
@@ -35,154 +41,207 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
         </filter>
       </defs>
 
-      {/* Scanner rig frame */}
-      <rect
-        x="72"
-        y="36"
-        width="256"
-        height="170"
-        rx="8"
+      {/* Central device icon — single storage media at top */}
+      <motion.g
+        initial={{ opacity: 0, y: -10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, damping: 16, delay: 0.1 }}
+        viewport={{ once: true }}
+      >
+        <rect
+          x="168"
+          y="18"
+          width="64"
+          height="44"
+          rx="5"
+          stroke={stroke}
+          strokeWidth="2"
+          fill={muted}
+        />
+        <line
+          x1="180"
+          y1="34"
+          x2="220"
+          y2="34"
+          stroke={stroke}
+          strokeWidth="1.2"
+          strokeOpacity="0.35"
+        />
+        <line
+          x1="180"
+          y1="42"
+          x2="212"
+          y2="42"
+          stroke={stroke}
+          strokeWidth="1"
+          strokeOpacity="0.22"
+        />
+        <rect
+          x="214"
+          y="52"
+          width="8"
+          height="4"
+          rx="1"
+          stroke={stroke}
+          strokeWidth="1"
+          fill={muted}
+        />
+        <motion.circle
+          cx="228"
+          cy="56"
+          r="3"
+          fill={accent}
+          animate={{ opacity: [1, 0.25, 1] }}
+          transition={{ duration: 1.8, repeat: Infinity }}
+        />
+      </motion.g>
+
+      {/* Vertical stem from device bottom */}
+      <motion.line
+        x1="200"
+        y1="62"
+        x2="200"
+        y2="92"
         stroke={stroke}
-        strokeWidth="2.2"
-        fill={muted}
-      />
-      {/* Top toolbar */}
-      <rect x="72" y="36" width="256" height="24" rx="8" fill={stroke} fillOpacity="0.07" />
-      <line x1="72" y1="60" x2="328" y2="60" stroke={stroke} strokeWidth="1" strokeOpacity="0.2" />
-      <circle cx="88" cy="48" r="4" fill={stroke} fillOpacity="0.25" />
-      <circle cx="100" cy="48" r="4" fill={stroke} fillOpacity="0.16" />
-      <circle cx="112" cy="48" r="4" fill={stroke} fillOpacity="0.1" />
-
-      {/* Three media bays */}
-      {bays.map(({ y }, i) => (
-        <motion.g
-          key={i}
-          initial={{ opacity: 0, x: -12 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.36, delay: i * 0.14 }}
-          viewport={{ once: true }}
-        >
-          {/* Bay slot */}
-          <rect
-            x="88"
-            y={y}
-            width="224"
-            height="36"
-            rx="4"
-            stroke={stroke}
-            strokeWidth="1.5"
-            fill={muted}
-          />
-          {/* Drive label chip */}
-          <rect x="100" y={y + 10} width="52" height="14" rx="3" fill={stroke} fillOpacity="0.08" />
-          <line
-            x1="106"
-            y1={y + 15}
-            x2="142"
-            y2={y + 15}
-            stroke={stroke}
-            strokeWidth="1.2"
-            strokeOpacity="0.35"
-          />
-          <line
-            x1="106"
-            y1={y + 21}
-            x2="130"
-            y2={y + 21}
-            stroke={stroke}
-            strokeWidth="1"
-            strokeOpacity="0.2"
-          />
-          {/* Serial number block */}
-          <rect x="164" y={y + 10} width="36" height="14" rx="2" fill={stroke} fillOpacity="0.05" />
-          <line
-            x1="170"
-            y1={y + 17}
-            x2="194"
-            y2={y + 17}
-            stroke={stroke}
-            strokeWidth="0.8"
-            strokeOpacity="0.25"
-            strokeDasharray="2 2"
-          />
-          {/* Connector pins */}
-          <rect
-            x="270"
-            y={y + 8}
-            width="7"
-            height="18"
-            rx="2"
-            stroke={stroke}
-            strokeWidth="1.2"
-            fill={muted}
-          />
-          <rect
-            x="281"
-            y={y + 8}
-            width="7"
-            height="18"
-            rx="2"
-            stroke={stroke}
-            strokeWidth="1.2"
-            fill={muted}
-          />
-          {/* Status LED */}
-          <motion.circle
-            cx="216"
-            cy={y + 18}
-            r="3.5"
-            fill={accent}
-            animate={{ opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1.6 + i * 0.4, repeat: Infinity }}
-          />
-        </motion.g>
-      ))}
-
-      {/* Audit beam sweeping top→bottom inside rig */}
-      <motion.rect
-        x="88"
-        y="48"
-        width="224"
-        height="8"
-        fill={accent}
-        fillOpacity="0.35"
-        filter="url(#glow-nist)"
-        initial={{ y: 48, opacity: 0 }}
-        whileInView={{ y: [48, 188, 188], opacity: [0, 1, 0] }}
-        transition={{ duration: 1.6, delay: 0.5, ease: "easeInOut" }}
+        strokeWidth="1.5"
+        strokeOpacity="0.4"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
         viewport={{ once: true }}
       />
 
-      {/* Post-scan hatching per bay */}
-      {bays.map(({ y }, i) => (
+      {/* Horizontal distribution bar */}
+      <motion.line
+        x1="84"
+        y1="92"
+        x2="316"
+        y2="92"
+        stroke={stroke}
+        strokeWidth="1.5"
+        strokeOpacity="0.3"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 0.5, delay: 0.42 }}
+        viewport={{ once: true }}
+      />
+
+      {/* Three branch drops */}
+      {outcomes.map(({ x, dash, sw, delay }) => (
+        <motion.line
+          key={x}
+          x1={x}
+          y1="92"
+          x2={x}
+          y2="136"
+          stroke={stroke}
+          strokeWidth={sw}
+          strokeOpacity="0.35"
+          strokeDasharray={dash || undefined}
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          transition={{ duration: 0.3, delay }}
+          viewport={{ once: true }}
+        />
+      ))}
+
+      {/* Three outcome boxes */}
+      {outcomes.map(({ x, label, accentCol, delay }, i) => (
         <motion.g
-          key={`h-${i}`}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.3, delay: 1.8 + i * 0.08 }}
+          key={label}
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 180, damping: 15, delay: delay + 0.15 }}
           viewport={{ once: true }}
         >
-          {[0, 1, 2, 3, 4, 5, 6].map((j) => (
-            <line
-              key={j}
-              x1={102 + j * 26}
-              y1={y + 5}
-              x2={98 + j * 26}
-              y2={y + 29}
-              stroke={accent}
-              strokeWidth="0.8"
-              strokeOpacity="0.2"
-              strokeLinecap="round"
+          <rect
+            x={x - 38}
+            y="136"
+            width="76"
+            height="46"
+            rx="5"
+            stroke={accentCol ? accent : stroke}
+            strokeWidth={accentCol ? 2 : 1.5}
+            fill={accentCol ? `${accent}12` : muted}
+          />
+          <text
+            x={x}
+            y="166"
+            textAnchor="middle"
+            fontSize="8.5"
+            fontFamily="monospace"
+            fill={accentCol ? accent : stroke}
+            opacity={accentCol ? 0.9 : 0.55}
+            fontWeight="600"
+          >
+            {label}
+          </text>
+          {/* Severity indicator dots */}
+          {Array.from({ length: i + 1 }).map((_, d) => (
+            <circle
+              key={d}
+              cx={x - i * 5 + d * 10}
+              cy="150"
+              r="2.5"
+              fill={accentCol ? accent : stroke}
+              fillOpacity={accentCol ? 0.7 : 0.3}
             />
           ))}
         </motion.g>
       ))}
 
+      {/* Connector lines from each box bottom to certificate */}
+      {outcomes.map(({ x, delay }) => (
+        <motion.line
+          key={`conn-${x}`}
+          x1={x}
+          y1="182"
+          x2={x}
+          y2="208"
+          stroke={stroke}
+          strokeWidth="1"
+          strokeOpacity="0.18"
+          strokeDasharray="3 3"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          transition={{ duration: 0.28, delay: delay + 0.5 }}
+          viewport={{ once: true }}
+        />
+      ))}
+      <motion.line
+        x1="84"
+        y1="208"
+        x2="316"
+        y2="208"
+        stroke={stroke}
+        strokeWidth="1"
+        strokeOpacity="0.15"
+        strokeDasharray="3 3"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 0.4, delay: 1.45 }}
+        viewport={{ once: true }}
+      />
+      <motion.line
+        x1="200"
+        y1="208"
+        x2="200"
+        y2="224"
+        stroke={stroke}
+        strokeWidth="1"
+        strokeOpacity="0.18"
+        strokeDasharray="3 3"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 0.22, delay: 1.6 }}
+        viewport={{ once: true }}
+      />
+
       {/* Certificate of Data Destruction — slides up */}
       <motion.g
-        initial={{ y: 18, opacity: 0 }}
+        initial={{ y: 16, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 140, damping: 16, delay: 2.1 }}
+        transition={{ type: "spring", stiffness: 140, damping: 16, delay: 1.75 }}
         viewport={{ once: true }}
       >
         <rect
@@ -195,7 +254,6 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
           strokeWidth="1.8"
           fill={muted}
         />
-        {/* Header line */}
         <line
           x1="106"
           y1="240"
@@ -206,11 +264,10 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
           strokeOpacity="0.45"
           strokeLinecap="round"
         />
-        {/* Detail lines */}
         <line
           x1="106"
           y1="252"
-          x2="220"
+          x2="222"
           y2="252"
           stroke={stroke}
           strokeWidth="1.2"
@@ -220,7 +277,7 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
         <line
           x1="106"
           y1="262"
-          x2="240"
+          x2="238"
           y2="262"
           stroke={stroke}
           strokeWidth="1.2"
@@ -237,7 +294,6 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
           strokeOpacity="0.15"
           strokeLinecap="round"
         />
-        {/* Method tag */}
         <rect x="106" y="278" width="44" height="12" rx="3" fill={accent} fillOpacity="0.12" />
         <text
           x="128"
@@ -270,16 +326,16 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
           filter="url(#glow-nist)"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
-          transition={{ duration: 0.38, delay: 2.5 }}
+          transition={{ duration: 0.38, delay: 2.2 }}
           viewport={{ once: true }}
         />
       </motion.g>
 
-      {/* NIST tag floats top-right */}
+      {/* NIST 800-88 tag top-right */}
       <motion.g
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 1.2 }}
+        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.9 }}
         viewport={{ once: true }}
         className="svg-pivot-c"
       >
@@ -305,38 +361,48 @@ export function IllustrationNIST({ onDark }: { onDark: boolean }) {
           800-88
         </text>
       </motion.g>
+
+      {/* Animation hint */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 2.2 }}
+        viewport={{ once: true }}
+      >
+        <text
+          x="200"
+          y="310"
+          textAnchor="middle"
+          fontSize="5.5"
+          fontFamily="monospace"
+          fill={stroke}
+          opacity="0.3"
+          letterSpacing="0.08em"
+        >
+          ⟳ CONTINUOUS LOOP
+        </text>
+      </motion.g>
     </svg>
   );
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
    02 — Data Privacy DPA / GDPR  (IllustrationDPA)
-   A large hexagonal security perimeter with three interconnected data
-   nodes inside. Dashed connection lines carry animated data packets.
-   A padlock snaps shut at the central junction. A legal-document badge
-   with sub-processor tag anchors at the bottom. Shield pulse radiates
-   outward continuously.
+   Chain of Custody: Lock & Key Handoff. Horizontal timeline showing three
+   custody stages: Your Company (locked) → Transit (key handoff animated) →
+   Cindariq (locked with sub-processor). Keys animate between nodes to show
+   secure data passage and responsibility transfer. A DPA badge anchors at
+   top-left and compliance checkmarks appear as data custody is verified.
 ───────────────────────────────────────────────────────────────────────────*/
 export function IllustrationDPA({ onDark }: { onDark: boolean }) {
   const { stroke, accent, muted } = useThemeColors(onDark);
 
-  // Hexagonal perimeter points
-  const hexR = 118;
-  const hcx = 200,
-    hcy = 150;
-  const hexPts = [0, 1, 2, 3, 4, 5]
-    .map((i) => {
-      const a = (i * 60 - 90) * (Math.PI / 180);
-      return `${+(hcx + hexR * Math.cos(a)).toFixed(1)},${+(hcy + hexR * Math.sin(a)).toFixed(1)}`;
-    })
-    .join(" ");
-
-  // Triangle node positions
-  const nodes = [
-    { cx: 160, cy: 110 },
-    { cx: 240, cy: 110 },
-    { cx: 200, cy: 195 },
-  ];
+  // Custody stages: x position, label, isTarget
+  const stages = [
+    { x: 84, label: "YOUR DATA", isTarget: false, delay: 0.1 },
+    { x: 200, label: "IN TRANSIT", isTarget: false, delay: 0.35 },
+    { x: 316, label: "CINDARIQ", isTarget: true, delay: 0.6 },
+  ] as const;
 
   return (
     <svg
@@ -353,248 +419,268 @@ export function IllustrationDPA({ onDark }: { onDark: boolean }) {
         </filter>
       </defs>
 
-      {/* Hexagonal security perimeter */}
-      <motion.polygon
-        points={hexPts}
+      {/* Horizontal timeline baseline */}
+      <motion.line
+        x1="84"
+        y1="160"
+        x2="316"
+        y2="160"
         stroke={stroke}
         strokeWidth="2"
-        strokeOpacity="0.35"
-        fill={muted}
-        initial={{ pathLength: 0, opacity: 0 }}
-        whileInView={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
+        strokeOpacity="0.42"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
         viewport={{ once: true }}
       />
-      {/* Pulsing security ring */}
-      <motion.polygon
-        points={hexPts}
-        stroke={accent}
-        strokeWidth="1.5"
-        fill="none"
-        filter="url(#glow-dpa)"
-        animate={{ opacity: [0, 0.45, 0], strokeWidth: [1.5, 2.5, 1.5] }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-      />
-      {/* Inner hexagon ring */}
-      {(() => {
-        const innerR = 90;
-        const innerPts = [0, 1, 2, 3, 4, 5]
-          .map((i) => {
-            const a = (i * 60 - 90) * (Math.PI / 180);
-            return `${+(hcx + innerR * Math.cos(a)).toFixed(1)},${+(hcy + innerR * Math.sin(a)).toFixed(1)}`;
-          })
-          .join(" ");
-        return (
-          <polygon
-            points={innerPts}
-            stroke={stroke}
-            strokeWidth="1"
-            strokeOpacity="0.12"
-            strokeDasharray="4 6"
-            fill="none"
-          />
-        );
-      })()}
 
-      {/* Connection lines between nodes */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-        viewport={{ once: true }}
-      >
-        {[
-          [nodes[0], nodes[1]],
-          [nodes[1], nodes[2]],
-          [nodes[2], nodes[0]],
-        ].map(([from, to], i) => (
-          <line
-            key={i}
-            x1={from.cx}
-            y1={from.cy}
-            x2={to.cx}
-            y2={to.cy}
-            stroke={stroke}
-            strokeWidth="1.5"
-            strokeOpacity="0.4"
-            strokeDasharray="5 4"
-          />
-        ))}
-      </motion.g>
-
-      {/* Data nodes */}
-      {nodes.map((n, i) => (
+      {/* Three custody nodes with locks */}
+      {stages.map(({ x, label, isTarget, delay }) => (
         <motion.g
-          key={i}
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 220, damping: 14, delay: 0.8 + i * 0.15 }}
+          key={label}
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 16, delay }}
           viewport={{ once: true }}
-          className="svg-pivot-c"
         >
-          <circle cx={n.cx} cy={n.cy} r="16" stroke={stroke} strokeWidth="1.8" fill={muted} />
-          {/* Inner detail — data icon */}
-          <rect
-            x={n.cx - 6}
-            y={n.cy - 7}
-            width="12"
-            height="14"
-            rx="2"
-            stroke={stroke}
-            strokeWidth="1"
-            strokeOpacity="0.4"
+          {/* Node circle */}
+          <circle cx={x} cy="160" r="28" stroke={stroke} strokeWidth="1.8" fill={muted} />
+
+          {/* Padlock icon inside node */}
+          <g>
+            {/* Lock body */}
+            <rect
+              x={x - 9}
+              y="160"
+              width="18"
+              height="14"
+              rx="2"
+              stroke={isTarget ? accent : stroke}
+              strokeWidth="1.8"
+              fill="none"
+            />
+            {/* Lock shackle */}
+            <path
+              d={`M${x - 6} 160 Q${x - 6} 152 ${x} 152 Q${x + 6} 152 ${x + 6} 160`}
+              stroke={isTarget ? accent : stroke}
+              strokeWidth="1.8"
+              fill="none"
+              strokeLinecap="round"
+            />
+            {/* Lock keyhole */}
+            <circle
+              cx={x}
+              cy="166"
+              r="2"
+              fill={isTarget ? accent : stroke}
+              opacity={isTarget ? 0.8 : 0.45}
+            />
+          </g>
+
+          {/* Stage label below node */}
+          <text
+            x={x}
+            y="198"
+            textAnchor="middle"
+            fontSize="6.5"
+            fontFamily="monospace"
+            fill={stroke}
+            opacity="0.45"
+            letterSpacing="0.05em"
+          >
+            {label}
+          </text>
+
+          {/* Pulsing ring on all nodes */}
+          <motion.circle
+            cx={x}
+            cy="160"
+            r="28"
+            stroke={isTarget ? accent : stroke}
+            strokeWidth={isTarget ? 1.4 : 0.9}
             fill="none"
-          />
-          <line
-            x1={n.cx - 3}
-            y1={n.cy - 2}
-            x2={n.cx + 3}
-            y2={n.cy - 2}
-            stroke={stroke}
-            strokeWidth="0.8"
-            strokeOpacity="0.3"
-          />
-          <line
-            x1={n.cx - 3}
-            y1={n.cy + 2}
-            x2={n.cx + 3}
-            y2={n.cy + 2}
-            stroke={stroke}
-            strokeWidth="0.8"
-            strokeOpacity="0.3"
+            animate={{ opacity: isTarget ? [0, 0.5, 0] : [0, 0.25, 0], r: [28, 36, 28] }}
+            transition={{
+              duration: isTarget ? 2.6 : 3.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: delay * 0.5,
+            }}
           />
         </motion.g>
       ))}
 
-      {/* Animated data packets flowing around triangle */}
-      {[0, 1, 2].map((i) => {
-        const from = nodes[i];
-        const to = nodes[(i + 1) % 3];
-        return (
-          <motion.circle
-            key={`pkt-${i}`}
-            cx={from.cx}
-            cy={from.cy}
-            r="3.5"
-            fill={accent}
-            filter="url(#glow-dpa)"
-            initial={{ cx: from.cx, cy: from.cy }}
-            animate={{
-              cx: [from.cx, to.cx],
-              cy: [from.cy, to.cy],
-            }}
-            transition={{ duration: 2, delay: i * 0.7, repeat: Infinity, ease: "linear" }}
-          />
-        );
-      })}
-
-      {/* Central padlock snaps shut */}
+      {/* Animated key handoffs between nodes */}
+      {/* Key 1: Your Data → In Transit */}
       <motion.g
-        initial={{ y: -14, scale: 0, opacity: 0 }}
-        whileInView={{ y: 0, scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 280, damping: 14, delay: 1.6 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <motion.g
+          animate={{ x: [0, 58, 116], y: [0, -12, 0] }}
+          transition={{ duration: 1.8, delay: 0.7, repeat: Infinity, repeatDelay: 1 }}
+        >
+          {/* Key shaft */}
+          <line
+            x1="84"
+            y1="160"
+            x2="104"
+            y2="160"
+            stroke={accent}
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            filter="url(#glow-dpa)"
+          />
+          {/* Key head */}
+          <circle
+            cx="110"
+            cy="160"
+            r="4.5"
+            stroke={accent}
+            strokeWidth="1.5"
+            fill={accent}
+            fillOpacity="0.4"
+          />
+          {/* Key teeth */}
+          {[0, 1, 2].map((t) => (
+            <rect
+              key={t}
+              x={112 + t * 4}
+              y="158"
+              width="2.5"
+              height="4"
+              fill={accent}
+              fillOpacity="0.6"
+            />
+          ))}
+        </motion.g>
+      </motion.g>
+
+      {/* Key 2: In Transit → Cindariq */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.75 }}
+        viewport={{ once: true }}
+      >
+        <motion.g
+          animate={{ x: [0, 58, 116], y: [0, -12, 0] }}
+          transition={{ duration: 1.8, delay: 1.2, repeat: Infinity, repeatDelay: 1 }}
+        >
+          {/* Key shaft */}
+          <line
+            x1="200"
+            y1="160"
+            x2="220"
+            y2="160"
+            stroke={accent}
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            filter="url(#glow-dpa)"
+          />
+          {/* Key head */}
+          <circle
+            cx="226"
+            cy="160"
+            r="4.5"
+            stroke={accent}
+            strokeWidth="1.5"
+            fill={accent}
+            fillOpacity="0.4"
+          />
+          {/* Key teeth */}
+          {[0, 1, 2].map((t) => (
+            <rect
+              key={t}
+              x={228 + t * 4}
+              y="158"
+              width="2.5"
+              height="4"
+              fill={accent}
+              fillOpacity="0.6"
+            />
+          ))}
+        </motion.g>
+      </motion.g>
+
+      {/* Compliance checkmarks appear at each stage */}
+      {stages.map(({ x, delay }) => (
+        <motion.g
+          key={`check-${x}`}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 14, delay: delay + 0.5 }}
+          viewport={{ once: true }}
+          className="svg-pivot-c"
+        >
+          <circle
+            cx={x + 22}
+            cy="128"
+            r="10"
+            stroke={accent}
+            strokeWidth="1.2"
+            fill={accent}
+            fillOpacity="0.08"
+          />
+          <motion.path
+            d={`M${x + 18} ${128}l3 3 6-6`}
+            stroke={accent}
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            transition={{ duration: 0.3, delay: delay + 0.8 }}
+            viewport={{ once: true }}
+          />
+        </motion.g>
+      ))}
+
+      {/* Sub-processor badge on Cindariq node */}
+      <motion.g
+        initial={{ y: 10, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 140, damping: 14, delay: 1.1 }}
+        viewport={{ once: true }}
+      >
+        <rect
+          x="266"
+          y="216"
+          width="68"
+          height="20"
+          rx="5"
+          stroke={accent}
+          strokeWidth="1.4"
+          fill={muted}
+        />
+        <text
+          x="300"
+          y="228"
+          textAnchor="middle"
+          fontSize="6.5"
+          fontFamily="monospace"
+          fill={accent}
+          opacity="0.8"
+          fontWeight="600"
+        >
+          SUB-PROCESSOR
+        </text>
+      </motion.g>
+
+      {/* Data Protection Act badge */}
+      <motion.g
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.2 }}
         viewport={{ once: true }}
         className="svg-pivot-c"
       >
         <rect
-          x="186"
-          y="134"
-          width="28"
-          height="22"
-          rx="4"
-          fill={muted}
-          stroke={accent}
-          strokeWidth="2"
-        />
-        <path
-          d="M192 134v-6a8 8 0 0 1 16 0v6"
-          stroke={accent}
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-        />
-        <circle cx="200" cy="145" r="3" fill={accent} filter="url(#glow-dpa)" />
-        <line
-          x1="200"
-          y1="148"
-          x2="200"
-          y2="152"
-          stroke={accent}
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </motion.g>
-
-      {/* Legal sub-processor badge */}
-      <motion.g
-        initial={{ y: 12, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 140, damping: 16, delay: 2.0 }}
-        viewport={{ once: true }}
-      >
-        <rect
-          x="140"
-          y="272"
-          width="120"
-          height="30"
-          rx="6"
-          stroke={accent}
-          strokeWidth="1.5"
-          fill={muted}
-        />
-        <line
-          x1="155"
-          y1="284"
-          x2="220"
-          y2="284"
-          stroke={stroke}
-          strokeWidth="1.4"
-          strokeOpacity="0.4"
-          strokeLinecap="round"
-        />
-        <line
-          x1="155"
-          y1="293"
-          x2="200"
-          y2="293"
-          stroke={stroke}
-          strokeWidth="1"
-          strokeOpacity="0.2"
-          strokeLinecap="round"
-        />
-        <circle
-          cx="238"
-          cy="287"
-          r="8"
-          stroke={accent}
-          strokeWidth="1.2"
-          fill={accent}
-          fillOpacity="0.1"
-        />
-        <motion.path
-          d="M234 287l3 3 6-6"
-          stroke={accent}
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          transition={{ duration: 0.3, delay: 2.3 }}
-          viewport={{ once: true }}
-        />
-      </motion.g>
-
-      {/* DPA tag top-left */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.28, delay: 1.8 }}
-        viewport={{ once: true }}
-      >
-        <rect
-          x="58"
-          y="20"
-          width="60"
+          x="32"
+          y="16"
+          width="68"
           height="18"
           rx="4"
           stroke={accent}
@@ -602,8 +688,8 @@ export function IllustrationDPA({ onDark }: { onDark: boolean }) {
           fill={muted}
         />
         <text
-          x="88"
-          y="32"
+          x="66"
+          y="28"
           textAnchor="middle"
           fontSize="7"
           fontFamily="monospace"
@@ -613,26 +699,79 @@ export function IllustrationDPA({ onDark }: { onDark: boolean }) {
           DPA 2019
         </text>
       </motion.g>
+
+      {/* Chain of Custody badge */}
+      <motion.g
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.35 }}
+        viewport={{ once: true }}
+        className="svg-pivot-c"
+      >
+        <rect
+          x="300"
+          y="16"
+          width="68"
+          height="18"
+          rx="4"
+          stroke={stroke}
+          strokeWidth="1.2"
+          fill={muted}
+        />
+        <text
+          x="334"
+          y="28"
+          textAnchor="middle"
+          fontSize="6.5"
+          fontFamily="monospace"
+          fill={stroke}
+          opacity="0.5"
+        >
+          CHAIN OF CUSTODY
+        </text>
+      </motion.g>
+
+      {/* Animation hint */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 2.2 }}
+        viewport={{ once: true }}
+      >
+        <text
+          x="200"
+          y="310"
+          textAnchor="middle"
+          fontSize="5.5"
+          fontFamily="monospace"
+          fill={stroke}
+          opacity="0.3"
+          letterSpacing="0.08em"
+        >
+          ⟳ CONTINUOUS LOOP
+        </text>
+      </motion.g>
     </svg>
   );
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
    03 — ESG Reporting GRI 306 / ISO 14064  (IllustrationISO)
-   A report document with header and text placeholders. Inside the doc:
-   four ascending bar columns and a descending trend line (Scope 3
-   reduction). A floating symmetric leaf with stem bobbles to the right.
-   A GRI 306 tag sits below the leaf, and an ISO 14064 stamp badge is
-   inset at the document's bottom-right corner.
+   Scope 3 emissions accounting cascade. Three source nodes (hardware
+   manufacture, secure transport, end-of-life processing) each carry a
+   CO₂ value chip. Animated flow lines funnel into a central summing node
+   labelled "Scope 3 Total". An avoided-emissions credit badge slides up
+   below it. GRI 306 and ISO 14064 standard tags anchor at top-right.
 ───────────────────────────────────────────────────────────────────────────*/
 export function IllustrationISO({ onDark }: { onDark: boolean }) {
   const { stroke, accent, muted } = useThemeColors(onDark);
-  const bars = [
-    { x: 104, h: 42, delay: 0.5 },
-    { x: 130, h: 56, delay: 0.62 },
-    { x: 156, h: 38, delay: 0.74 },
-    { x: 182, h: 68, delay: 0.86 },
-  ];
+
+  // Source nodes: x, y, label, co2 value, animation delay
+  const sources = [
+    { cx: 64, cy: 80, label: "HARDWARE", co2: "1.4 t", delay: 0.2 },
+    { cx: 200, cy: 56, label: "TRANSPORT", co2: "0.3 t", delay: 0.35 },
+    { cx: 336, cy: 80, label: "END-OF-LIFE", co2: "0.8 t", delay: 0.5 },
+  ] as const;
 
   return (
     <svg
@@ -648,218 +787,241 @@ export function IllustrationISO({ onDark }: { onDark: boolean }) {
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
-
-      {/* Report document */}
-      <rect
-        x="72"
-        y="28"
-        width="192"
-        height="264"
-        rx="7"
-        stroke={stroke}
-        strokeWidth="2.2"
-        fill={muted}
-      />
-      {/* Document header bar */}
-      <rect x="72" y="28" width="192" height="30" rx="7" fill={stroke} fillOpacity="0.07" />
-      <line x1="72" y1="58" x2="264" y2="58" stroke={stroke} strokeWidth="1" strokeOpacity="0.2" />
-      <rect x="88" y="38" width="76" height="8" rx="3" fill={stroke} fillOpacity="0.2" />
-
-      {/* Text lines */}
-      {[0, 1, 2].map((i) => (
-        <motion.rect
-          key={i}
-          x="88"
-          y={72 + i * 16}
-          width={80 + (i % 2) * 28}
-          height="6"
-          rx="3"
-          fill={stroke}
-          opacity={0.18 - i * 0.03}
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 0.18 - i * 0.03 }}
-          transition={{ duration: 0.32, delay: 0.1 + i * 0.1 }}
+      {/* Source nodes */}
+      {sources.map(({ cx, cy, label, co2, delay }, i) => (
+        <motion.g
+          key={label}
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 16, delay }}
           viewport={{ once: true }}
-          className="svg-pivot-l"
+        >
+          {/* Node circle */}
+          <circle cx={cx} cy={cy} r="28" stroke={stroke} strokeWidth="1.8" fill={muted} />
+          {/* CO₂ chip inside node */}
+          <rect
+            x={cx - 18}
+            y={cy - 9}
+            width="36"
+            height="14"
+            rx="4"
+            fill={accent}
+            fillOpacity="0.12"
+            stroke={accent}
+            strokeWidth="1"
+          />
+          <text
+            x={cx}
+            y={cy + 2}
+            textAnchor="middle"
+            fontSize="7.5"
+            fontFamily="monospace"
+            fill={accent}
+            fontWeight="600"
+            opacity="0.9"
+          >
+            {co2}
+          </text>
+          {/* Label beneath node */}
+          <text
+            x={cx}
+            y={cy + 44}
+            textAnchor="middle"
+            fontSize="6"
+            fontFamily="monospace"
+            fill={stroke}
+            opacity="0.45"
+            letterSpacing="0.06em"
+          >
+            {label}
+          </text>
+          {/* Pulsing ring */}
+          <motion.circle
+            cx={cx}
+            cy={cy}
+            r="28"
+            stroke={accent}
+            strokeWidth="1.2"
+            fill="none"
+            animate={{ opacity: [0, 0.35, 0], r: [28, 36, 28] }}
+            transition={{
+              duration: 3 + i * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5,
+            }}
+          />
+        </motion.g>
+      ))}
+      {/* Flow lines from each source to summing node (cx=200, cy=178) */}
+      {sources.map(({ cx, cy, delay }) => (
+        <motion.line
+          key={`flow-${cx}`}
+          x1={cx}
+          y1={cy + 28}
+          x2={200}
+          y2={178 - 30}
+          stroke={accent}
+          strokeWidth="1.5"
+          strokeOpacity="0.35"
+          strokeDasharray="5 4"
+          initial={{ pathLength: 0, opacity: 0 }}
+          whileInView={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 0.55, delay: delay + 0.4, ease: "easeInOut" }}
+          viewport={{ once: true }}
         />
       ))}
-
-      {/* Chart baseline */}
-      <line
-        x1="98"
-        y1="230"
-        x2="212"
-        y2="230"
-        stroke={stroke}
-        strokeWidth="1.4"
-        strokeOpacity="0.35"
-      />
-      <line x1="98" y1="230" x2="98" y2="158" stroke={stroke} strokeWidth="1" strokeOpacity="0.2" />
-
-      {/* Bar columns — waste diversion tonnage */}
-      {bars.map(({ x, h, delay }, i) => (
-        <motion.rect
-          key={i}
-          x={x}
-          y={230 - h}
-          width="20"
-          height={h}
-          rx="3"
-          fill={accent}
-          opacity={0.4 + i * 0.14}
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          className="svg-pivot-b"
-          transition={{ duration: 0.44, delay }}
-          viewport={{ once: true }}
-        />
-      ))}
-
-      {/* Downward trend line — Scope 3 emissions */}
-      <motion.path
-        d="M 106 178 L 132 170 L 158 184 L 186 162"
-        stroke={stroke}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeOpacity="0.5"
-        fill="none"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        transition={{ duration: 0.8, delay: 1.0, ease: "easeInOut" }}
-        viewport={{ once: true }}
-      />
-      {/* Trend line dots */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.8 }}
-        viewport={{ once: true }}
-      >
-        {[
-          { cx: 106, cy: 178 },
-          { cx: 132, cy: 170 },
-          { cx: 158, cy: 184 },
-          { cx: 186, cy: 162 },
-        ].map((pt, i) => (
-          <circle key={i} cx={pt.cx} cy={pt.cy} r="3" fill={stroke} fillOpacity={0.5 + i * 0.1} />
-        ))}
-      </motion.g>
-
-      {/* ISO stamp inside document bottom-right */}
-      <motion.g
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 1.1 }}
-        viewport={{ once: true }}
-        className="svg-pivot-c"
-      >
-        <circle
-          cx="234"
-          cy="258"
-          r="20"
-          stroke={accent}
-          strokeWidth="1.8"
-          fill={accent}
-          fillOpacity="0.07"
-        />
-        <circle cx="234" cy="258" r="14" stroke={accent} strokeWidth="1" strokeDasharray="3 2.5" />
-        <motion.path
-          d="M226 258l6 6 10-10"
-          stroke={accent}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#glow-iso)"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          transition={{ duration: 0.36, delay: 1.4 }}
-          viewport={{ once: true }}
-        />
-      </motion.g>
-
-      {/* Floating leaf — right of document */}
+      {/* Animated CO₂ packets flowing down each line */}
+      {sources.map(({ cx, cy, delay }, i) => {
+        const startX = cx;
+        const startY = cy + 28;
+        const endX = 200;
+        const endY = 148;
+        return (
+          <motion.g
+            key={`pkt-${i}`}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.2, delay: delay + 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.circle
+              cx={startX}
+              cy={startY}
+              r="4"
+              fill={accent}
+              filter="url(#glow-iso)"
+              animate={{
+                cx: [startX, endX],
+                cy: [startY, endY],
+                opacity: [0, 0.8, 0],
+              }}
+              transition={{
+                duration: 1.2,
+                delay: delay + 0.8,
+                repeat: Infinity,
+                repeatDelay: 2.4 + i * 0.3,
+                ease: "easeIn",
+              }}
+            />
+          </motion.g>
+        );
+      })}
+      {/* Summing node — Scope 3 Total */}
       <motion.g
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 160, damping: 14, delay: 0.9 }}
+        transition={{ type: "spring", stiffness: 160, damping: 14, delay: 1.1 }}
         viewport={{ once: true }}
         className="svg-pivot-c"
       >
-        <motion.g
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+        <circle cx="200" cy="178" r="36" stroke={accent} strokeWidth="2.2" fill={muted} />
+        <circle
+          cx="200"
+          cy="178"
+          r="28"
+          stroke={accent}
+          strokeWidth="1"
+          strokeDasharray="3 3"
+          fill="none"
+          strokeOpacity="0.4"
+        />
+        {/* Σ symbol */}
+        <text
+          x="200"
+          y="172"
+          textAnchor="middle"
+          fontSize="18"
+          fontFamily="serif"
+          fill={stroke}
+          opacity="0.55"
         >
-          {/* Left lobe */}
-          <path
-            d="M312 116 C296 96 272 108 274 140 C274 140 296 148 312 116z"
-            stroke={accent}
-            strokeWidth="1.8"
-            fill={accent}
-            fillOpacity="0.13"
-          />
-          {/* Right lobe */}
-          <path
-            d="M312 116 C328 96 352 108 350 140 C350 140 328 148 312 116z"
-            stroke={accent}
-            strokeWidth="1.8"
-            fill={accent}
-            fillOpacity="0.13"
-          />
-          {/* Centre vein */}
-          <line
-            x1="312"
-            y1="116"
-            x2="312"
-            y2="148"
-            stroke={accent}
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeOpacity="0.55"
-          />
-          {/* Side veins */}
-          <line
-            x1="312"
-            y1="126"
-            x2="300"
-            y2="132"
-            stroke={accent}
-            strokeWidth="0.8"
-            strokeOpacity="0.35"
-            strokeLinecap="round"
-          />
-          <line
-            x1="312"
-            y1="126"
-            x2="324"
-            y2="132"
-            stroke={accent}
-            strokeWidth="0.8"
-            strokeOpacity="0.35"
-            strokeLinecap="round"
-          />
-          {/* Stem */}
-          <path
-            d="M312 148 Q310 166 308 178"
-            stroke={accent}
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            fill="none"
-            strokeOpacity="0.45"
-          />
-        </motion.g>
+          Σ
+        </text>
+        <text
+          x="200"
+          y="186"
+          textAnchor="middle"
+          fontSize="6"
+          fontFamily="monospace"
+          fill={accent}
+          opacity="0.75"
+          letterSpacing="0.05em"
+        >
+          SCOPE 3
+        </text>
       </motion.g>
-
-      {/* GRI 306 tag */}
+      {/* Total value chip below summing node */}
       <motion.g
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.28, delay: 1.5 }}
+        initial={{ y: 12, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 140, damping: 14, delay: 1.6 }}
         viewport={{ once: true }}
       >
         <rect
-          x="284"
-          y="182"
+          x="152"
+          y="226"
+          width="96"
+          height="26"
+          rx="6"
+          stroke={accent}
+          strokeWidth="1.6"
+          fill={muted}
+        />
+        <text
+          x="200"
+          y="243"
+          textAnchor="middle"
+          fontSize="9"
+          fontFamily="monospace"
+          fill={accent}
+          fontWeight="600"
+          opacity="0.9"
+        >
+          2.5 t CO₂e
+        </text>
+      </motion.g>
+      {/* Avoided emissions credit badge */}
+      <motion.g
+        initial={{ y: 12, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 130, damping: 14, delay: 1.9 }}
+        viewport={{ once: true }}
+      >
+        <rect
+          x="112"
+          y="264"
+          width="176"
+          height="24"
+          rx="5"
+          stroke={stroke}
+          strokeWidth="1.2"
+          fill={muted}
+          strokeOpacity="0.25"
+        />
+        <text
+          x="200"
+          y="280"
+          textAnchor="middle"
+          fontSize="7.5"
+          fontFamily="monospace"
+          fill={stroke}
+          opacity="0.45"
+        >
+          −0.9 t avoided via refurb
+        </text>
+      </motion.g>
+      {/* GRI 306 tag */}
+      <motion.g
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.7 }}
+        viewport={{ once: true }}
+        className="svg-pivot-c"
+      >
+        <rect
+          x="336"
+          y="16"
           width="56"
           height="18"
           rx="4"
@@ -868,8 +1030,8 @@ export function IllustrationISO({ onDark }: { onDark: boolean }) {
           fill={muted}
         />
         <text
-          x="312"
-          y="194"
+          x="364"
+          y="28"
           textAnchor="middle"
           fontSize="7.5"
           fontFamily="monospace"
@@ -879,17 +1041,17 @@ export function IllustrationISO({ onDark }: { onDark: boolean }) {
           GRI 306
         </text>
       </motion.g>
-
-      {/* ISO 14064 tag below GRI */}
+      {/* ISO 14064 tag */}
       <motion.g
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.28, delay: 1.7 }}
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.85 }}
         viewport={{ once: true }}
+        className="svg-pivot-c"
       >
         <rect
-          x="280"
-          y="208"
+          x="332"
+          y="40"
           width="64"
           height="18"
           rx="4"
@@ -898,17 +1060,37 @@ export function IllustrationISO({ onDark }: { onDark: boolean }) {
           fill={muted}
         />
         <text
-          x="312"
-          y="220"
+          x="364"
+          y="52"
           textAnchor="middle"
           fontSize="7"
           fontFamily="monospace"
           fill={stroke}
-          opacity="0.55"
+          opacity="0.5"
         >
           ISO 14064
         </text>
       </motion.g>
+      {/* Animation hint */}
+      <motion.g
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 2.4 }}
+        viewport={{ once: true }}
+      >
+        <text
+          x="200"
+          y="310"
+          textAnchor="middle"
+          fontSize="5.5"
+          fontFamily="monospace"
+          fill={stroke}
+          opacity="0.3"
+          letterSpacing="0.08em"
+        >
+          ⟳ CONTINUOUS LOOP
+        </text>
+      </motion.g>{" "}
     </svg>
   );
 }
