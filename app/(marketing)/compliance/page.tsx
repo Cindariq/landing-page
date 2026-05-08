@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/content/eyebrow";
 import { ComplianceMap } from "@/components/sections/compliance-map";
 import { ClosingCTA } from "@/components/sections/closing-cta";
 import { FadeUp } from "@/components/motion/fade-up";
+import { PageHero } from "@/components/sections/page-hero";
 
 export const metadata: Metadata = {
   title: "Compliance Standards — NIST 800-88, DPA 2019, GRI 306, ISO 14064",
@@ -16,22 +17,12 @@ export default function CompliancePage() {
   return (
     <>
       {/* Page hero */}
-      <SectionContainer background="cinder" paddingY="md" ariaLabelledBy="compliance-page-heading">
-        <FadeUp>
-          <Eyebrow colour="smoke">Compliance</Eyebrow>
-        </FadeUp>
-        <FadeUp delay={0.12}>
-          <h1 id="compliance-page-heading" className="mb-6 max-w-160 text-h1 font-bold text-smoke">
-            Standards, named. Not gestured at.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={0.22}>
-          <p className="max-w-130 text-body-lg text-smoke/80">
-            Every Cindariq engagement produces evidence aligned to specific, named standards. We do
-            not describe our work in aspirational terms; we describe it in audit terms.
-          </p>
-        </FadeUp>
-      </SectionContainer>
+      <PageHero
+        eyebrow="Compliance"
+        headingId="compliance-page-heading"
+        heading="Standards, named. Not gestured at."
+        body="Every Cindariq engagement produces evidence aligned to specific, named standards. We do not describe our work in aspirational terms; we describe it in audit terms."
+      />
 
       {/* Three-standard panel (shared section component) */}
       <ComplianceMap />

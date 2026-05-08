@@ -23,7 +23,7 @@ export default function HomePage() {
       <Hero />
       <ProblemFraming />
       <HowItWorks />
-      <ComplianceMap />
+      <ComplianceMap showLink />
       <SectorGrid />
       <ClosingCTA />
     </>

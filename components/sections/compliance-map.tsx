@@ -2,6 +2,9 @@ import { SectionContainer } from "@/components/layout/section-container";
 import { Eyebrow } from "@/components/content/eyebrow";
 import { ComplianceCard } from "@/components/content/compliance-card";
 import { FadeUp } from "@/components/motion/fade-up";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 const CARDS = [
   {
@@ -87,7 +90,12 @@ const CARDS = [
   },
 ] as const;
 
-export function ComplianceMap() {
+interface ComplianceMapProps {
+  /** Whether to show the link to the compliance page next to the heading */
+  showLink?: boolean;
+}
+
+export function ComplianceMap({ showLink = false }: ComplianceMapProps = {}) {
   return (
     <SectionContainer
       background="parchment"
@@ -98,14 +106,23 @@ export function ComplianceMap() {
       <FadeUp>
         <Eyebrow colour="cinder">Compliance you do not have to translate</Eyebrow>
       </FadeUp>
-      <FadeUp delay={0.12}>
-        <h2
-          id="compliance-map-heading"
-          className="mb-16 max-w-125 text-h2 font-semibold text-cinder"
-        >
-          Standards, named.
-        </h2>
-      </FadeUp>
+      <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <FadeUp delay={0.12}>
+          <h2 id="compliance-map-heading" className="max-w-125 text-h2 font-semibold text-cinder">
+            Standards, named.
+          </h2>
+        </FadeUp>
+        {showLink && (
+          <FadeUp delay={0.22}>
+            <Button asChild variant="secondary">
+              <Link href="/compliance">
+                Read compliance statement
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
+            </Button>
+          </FadeUp>
+        )}
+      </div>
       <div className="grid grid-cols-1 gap-px overflow-hidden border border-cinder/10 bg-cinder/10 md:grid-cols-2 lg:grid-cols-4">
         {CARDS.map(({ id, icon, title, body }, index) => (
           <ComplianceCard key={id} icon={icon} title={title} body={body} index={index} />
