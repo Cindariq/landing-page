@@ -98,7 +98,7 @@ export async function submitContact(_prevState: unknown, formData: FormData) {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
     <tr>
       <td style="background:#0f172a;border-radius:8px 8px 0 0;padding:28px 32px;">
-        <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.1em;text-" + "trans" + "form:uppercase;color:#e85d26;">Cindariq</p>
+        <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.1em;color:#e85d26;">CINDARIQ</p>
         <h1 style="margin:8px 0 0;font-size:22px;font-weight:700;color:#f8fafc;">New Consultation Request</h1>
       </td>
     </tr>
