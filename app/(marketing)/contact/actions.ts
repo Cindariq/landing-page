@@ -85,20 +85,54 @@ export async function submitContact(_prevState: unknown, formData: FormData) {
     return { success: true, error: null };
   }
 
+  const row = (label: string, value: string) => `
+    <tr>
+      <td style="padding:10px 16px;width:130px;vertical-align:top;font-size:13px;font-weight:600;color:#6b7280;white-space:nowrap;">${label}</td>
+      <td style="padding:10px 16px;vertical-align:top;font-size:14px;color:#111827;">${value}</td>
+    </tr>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:32px 16px;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
+    <tr>
+      <td style="background:#0f172a;border-radius:8px 8px 0 0;padding:28px 32px;">
+        <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.1em;text-" + "trans" + "form:uppercase;color:#e85d26;">Cindariq</p>
+        <h1 style="margin:8px 0 0;font-size:22px;font-weight:700;color:#f8fafc;">New Consultation Request</h1>
+      </td>
+    </tr>
+    <tr>
+      <td style="background:#ffffff;border-radius:0 0 8px 8px;padding:8px 16px 24px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+          ${row("Full name", name)}
+          <tr><td colspan="2" style="padding:0 16px;"><hr style="border:none;border-top:1px solid #f1f5f9;margin:0;"></td></tr>
+          ${row("Company", company)}
+          ${role ? `<tr><td colspan="2" style="padding:0 16px;"><hr style="border:none;border-top:1px solid #f1f5f9;margin:0;"></td></tr>${row("Role", role)}` : ""}
+          <tr><td colspan="2" style="padding:0 16px;"><hr style="border:none;border-top:1px solid #f1f5f9;margin:0;"></td></tr>
+          ${row("Email address", `<a href="mailto:${email}" style="color:#e85d26;text-decoration:none;">${email}</a>`)}
+          ${phone ? `<tr><td colspan="2" style="padding:0 16px;"><hr style="border:none;border-top:1px solid #f1f5f9;margin:0;"></td></tr>${row("Phone number", `<a href="tel:${phone}" style="color:#e85d26;text-decoration:none;">${phone}</a>`)}` : ""}
+          <tr><td colspan="2" style="padding:0 16px;"><hr style="border:none;border-top:1px solid #f1f5f9;margin:0;"></td></tr>
+          ${row("Message", `<span style="white-space:pre-wrap;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`)}
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:20px 0 0;text-align:center;">
+        <p style="margin:0;font-size:12px;color:#9ca3af;">This lead was submitted via the Cindariq website consultation form.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
   const { error: sendError } = await resend.emails.send({
     from: process.env.CONTACT_EMAIL_FROM ?? "no-reply@cindariq.co.ke",
     to: process.env.CONTACT_EMAIL_TO ?? "hello@cindariq.co.ke",
     replyTo: email,
     subject: `New enquiry from ${name} — ${company}`,
-    text: [
-      `Name:     ${name}`,
-      `Company:  ${company}`,
-      `Role:     ${role || "—"}`,
-      `Email:    ${email}`,
-      `Phone:    ${phone || "—"}`,
-      "",
-      message,
-    ].join("\n"),
+    html,
+    text: `Name: ${name}\nCompany: ${company}\nRole: ${role || "—"}\nEmail: ${email}\nPhone: ${phone || "—"}\n\n${message}`,
   });
 
   if (sendError) {
