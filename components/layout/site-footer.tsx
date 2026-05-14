@@ -144,15 +144,12 @@ export function SiteFooter() {
               >
                 Terms of Service
               </Link>
-              <a
+              <Link
                 href="/cookie-policy"
-                aria-disabled="true"
-                tabIndex={-1}
-                className="pointer-events-none cursor-not-allowed text-caption text-smoke/20"
-                title="Coming soon"
+                className="text-caption text-smoke/40 transition-colors hover:text-smoke/70"
               >
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

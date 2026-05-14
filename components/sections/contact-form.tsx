@@ -10,6 +10,7 @@ import { submitContact } from "@/app/(marketing)/contact/actions";
 import { contactSchema } from "@/lib/schemas/contact";
 import { cn } from "@/lib/utils";
 import { useFormValidation } from "@/lib/store/form-store";
+import { useConsentStore } from "@/lib/store/consent-store";
 
 const initialState = { success: false, error: null as Record<string, string[]> | null };
 
@@ -65,16 +66,19 @@ export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const { touched, touch, fieldErrors, setFieldError, clearFieldError, reset } =
     useFormValidation();
+  const analyticsConsented = useConsentStore((s) => s.status === "accepted");
 
   // Fire analytics event once when form submission succeeds (PRD §5.6 AC)
   useEffect(() => {
     if (!state.success) return;
     reset();
-    window.gtag?.("event", "contact_form_submit");
-    window.plausible?.("contact_form_submit");
+    if (analyticsConsented) {
+      window.gtag?.("event", "contact_form_submit");
+      window.plausible?.("contact_form_submit");
+    }
     // reset is a stable Zustand action reference — safe to include in deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.success]);
+  }, [state.success, analyticsConsented]);
 
   // Validate a single field on blur
   function handleBlur(field: string, value: string) {
