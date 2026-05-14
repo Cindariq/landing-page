@@ -38,8 +38,7 @@ function Field({
           </span>
         )}
       </Label>
-      {/* Pass aria-describedby + aria-invalid to the child via cloneElement pattern */}
-      <div aria-describedby={error?.length ? errorId : undefined}>{children}</div>
+      <div>{children}</div>
       {error?.length ? (
         <span
           id={errorId}
@@ -64,13 +63,17 @@ declare global {
 
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
-  const { touched, touch, fieldErrors, setFieldError, clearFieldError } = useFormValidation();
+  const { touched, touch, fieldErrors, setFieldError, clearFieldError, reset } =
+    useFormValidation();
 
   // Fire analytics event once when form submission succeeds (PRD §5.6 AC)
   useEffect(() => {
     if (!state.success) return;
+    reset();
     window.gtag?.("event", "contact_form_submit");
     window.plausible?.("contact_form_submit");
+    // reset is a stable Zustand action reference — safe to include in deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.success]);
 
   // Validate a single field on blur
@@ -219,10 +222,7 @@ export function ContactForm() {
       </Field>
 
       {/* Honeypot — visually hidden, must stay empty */}
-      <div
-        aria-hidden="true"
-        className="tabindex-[-1] absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
-      >
+      <div aria-hidden="true" className="absolute -left-2499.75 h-0 w-0 overflow-hidden opacity-0">
         <label htmlFor="_hp">Leave this blank</label>
         <input id="_hp" name="_hp" type="text" tabIndex={-1} autoComplete="off" />
       </div>

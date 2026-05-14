@@ -36,6 +36,10 @@ function getResend() {
 
 // ---------------------------------------------------------------------------
 // Server action
+// Next.js Server Actions include built-in CSRF protection via origin/host header
+// matching. No additional CSRF token is required for same-origin submissions.
+// If this action is ever exposed over a raw fetch endpoint, add an explicit
+// CSRF token check at that point.
 // ---------------------------------------------------------------------------
 export async function submitContact(_prevState: unknown, formData: FormData) {
   // 1. Honeypot — silently succeed so bots get no signal
@@ -44,7 +48,11 @@ export async function submitContact(_prevState: unknown, formData: FormData) {
     return { success: true, error: null };
   }
 
-  // 2. Rate limit by IP (x-forwarded-for from Vercel / Cloudflare, fallback "unknown")
+  // 2. Rate limit by IP
+  //    x-forwarded-for is set by Vercel/Cloudflare edge and can be trusted in
+  //    those environments. On self-hosted infra this header can be forged by
+  //    the client — replace with a trusted header (e.g. CF-Connecting-IP) if
+  //    the deployment target changes.
   const hdrs = await headers();
   const ip = hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (isRateLimited(ip)) {

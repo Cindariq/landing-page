@@ -32,7 +32,7 @@ export default function ContactPage() {
           <aside aria-label="Alternative contact options" className="lg:pt-1">
             <div className="sticky top-24 flex flex-col gap-8">
               <div>
-                <h2 className="mb-3 text-h4 font-semibold text-cinder">Prefer to book directly?</h2>
+                <h3 className="mb-3 text-h4 font-semibold text-cinder">Prefer to book directly?</h3>
                 <p className="mb-4 text-body text-ash">
                   Use the calendar link to schedule a 45-minute discovery call at a time that suits
                   you. No preparation required on your side.
@@ -50,7 +50,7 @@ export default function ContactPage() {
               <hr className="border-cinder/10" />
 
               <div>
-                <h2 className="mb-3 text-h4 font-semibold text-cinder">What to expect</h2>
+                <h3 className="mb-3 text-h4 font-semibold text-cinder">What to expect</h3>
                 <ul className="space-y-3 text-body text-ash">
                   <li>Forty-five minutes, no longer.</li>
                   <li>We listen first. We pitch only if there is something worth pitching.</li>
