@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 export const MAIN_NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/case-studies", label: "Case studies" },
   { href: "/insights", label: "Insights" },
 ] as const;

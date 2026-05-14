@@ -4,25 +4,31 @@ import { Separator } from "@/components/ui/separator";
 import { LinkedinLogo, XLogo, InstagramLogo, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 
 const SERVICES = [
+  { href: "/services#compliance-platform", label: "Compliance Platform" },
   { href: "/services#data-destruction", label: "Data Destruction" },
   { href: "/services#secure-logistics", label: "Secure Logistics" },
-  { href: "/services#compliance-platform", label: "Compliance Platform" },
   { href: "/services#circular-recovery", label: "Circular Recovery" },
   { href: "/services#esg-reporting", label: "ESG Reporting" },
 ] as const;
 
 const COMPANY = [
   { href: "/about", label: "About Us" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/compliance", label: "Our Standards" },
-  { href: "/coming-soon", label: "Partners" },
-  { href: "/coming-soon", label: "Careers" },
+  { href: "/coming-soon?section=partners", label: "Partners" },
+  { href: "/coming-soon?section=careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+const RESOURCES = [
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/insights", label: "Insights" },
 ] as const;
 
 const COMPLIANCE_LINKS = [
   { href: "/compliance#data-destruction", label: "Data Destruction" },
   { href: "/compliance#data-privacy", label: "Data Privacy" },
-  { href: "/compliance#esg-reporting", label: "ESG Reporting" },
+  { href: "/compliance#esg-reporting", label: "ESG Framework" },
   { href: "/compliance#corporate-governance", label: "Corporate Governance" },
 ] as const;
 
@@ -82,7 +88,7 @@ export function SiteFooter() {
     <footer className="w-full bg-cinder" aria-label="Site footer">
       <div className="mx-auto max-w-360 px-6 py-16 md:px-10 lg:px-20">
         {/* Top grid — brand + three nav columns */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr]">
           {/* Brand column */}
           <div className="flex flex-col gap-5">
             <CindariqLogo height={32} colourMode="on-dark" />
@@ -92,8 +98,9 @@ export function SiteFooter() {
           </div>
 
           <FooterColumn heading="Company" links={COMPANY} />
-          <FooterColumn heading="Compliance" links={COMPLIANCE_LINKS} />
           <FooterColumn heading="Services" links={SERVICES} />
+          <FooterColumn heading="Compliance" links={COMPLIANCE_LINKS} />
+          <FooterColumn heading="Resources" links={RESOURCES} />
         </div>
 
         {/* Social + bottom bar */}
@@ -137,9 +144,15 @@ export function SiteFooter() {
               >
                 Terms of Service
               </Link>
-              <span className="cursor-not-allowed text-caption text-smoke/20" title="Coming soon">
+              <a
+                href="/cookie-policy"
+                aria-disabled="true"
+                tabIndex={-1}
+                className="pointer-events-none cursor-not-allowed text-caption text-smoke/20"
+                title="Coming soon"
+              >
                 Cookie Policy
-              </span>
+              </a>
             </div>
           </div>
         </div>
